@@ -1,0 +1,12 @@
+# Default theme settings for Still Me.
+features:
+  favicon: true
+  logo: true
+  name: true
+  slogan: true
+  node_user_picture: false
+  comment_user_picture: false
+  comment_user_verification: false
+
+logo:
+  use_default: true

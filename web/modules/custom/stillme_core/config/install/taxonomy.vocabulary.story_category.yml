@@ -1,0 +1,8 @@
+uuid: a2000001-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies: {  }
+name: 'Story Category'
+vid: story_category
+description: 'Categories for organising stories and reflections.'
+weight: 0

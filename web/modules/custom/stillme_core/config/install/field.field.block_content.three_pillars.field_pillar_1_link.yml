@@ -1,0 +1,23 @@
+uuid: f1000003-0000-0000-0000-000000001004
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.three_pillars
+    - field.storage.block_content.field_pillar_1_link
+  module:
+    - link
+id: block_content.three_pillars.field_pillar_1_link
+field_name: field_pillar_1_link
+entity_type: block_content
+bundle: three_pillars
+label: 'First Card Link'
+description: 'Optional link for the first card.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

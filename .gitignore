@@ -1,0 +1,35 @@
+# Drupal core and contrib (installed via Composer)
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+/vendor/
+
+# Composer
+/composer.lock
+
+# Drupal files
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/settings.php
+/web/sites/*/settings.local.php
+/web/sites/*/services.yml
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Drush
+/drush/Commands/contrib/

@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Still Me Project - Hero block template.
+ *
+ * Displays the homepage hero section with:
+ * - .hero wrapper
+ * - Logo/graphic area
+ * - Large headline (field_hero_heading)
+ * - Subheadline (field_hero_subheading)
+ * - Two CTA buttons (field_hero_cta_primary, field_hero_cta_secondary)
+ * - Soft background
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-hero',
+    'hero',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ 'Hero'|t }}">
+  <div class="container">
+    <div class="hero__inner">
+
+      {# -- Hero Logo / Graphic -- #}
+      <div class="hero__graphic" aria-hidden="true">
+        {% if content.field_hero_image|render|trim %}
+          {{ content.field_hero_image }}
+        {% else %}
+          {# Placeholder for logo/graphic #}
+          <div class="hero__logo-placeholder"></div>
+        {% endif %}
+      </div>
+
+      {# -- Hero Content -- #}
+      <div class="hero__content">
+
+        {{ title_prefix }}
+        {{ title_suffix }}
+
+        {# -- Headline -- #}
+        {% if content.field_hero_heading|render|trim %}
+          <h1 class="hero__heading">
+            {{ content.field_hero_heading }}
+          </h1>
+        {% else %}
+          <h1 class="hero__heading">
+            {{ 'You Are Still You.'|t }}
+          </h1>
+        {% endif %}
+
+        {# -- Subheadline -- #}
+        {% if content.field_hero_subheading|render|trim %}
+          <p class="hero__subheading">
+            {{ content.field_hero_subheading }}
+          </p>
+        {% else %}
+          <p class="hero__subheading">
+            {{ 'Preserving identity, dignity, and connection for those navigating memory loss.'|t }}
+          </p>
+        {% endif %}
+
+        {# -- CTA Buttons -- #}
+        <div class="hero__actions">
+          {% if content.field_hero_cta_primary|render|trim %}
+            <div class="hero__cta hero__cta--primary">
+              {{ content.field_hero_cta_primary }}
+            </div>
+          {% else %}
+            <a href="/donate" class="btn btn-primary btn-large">{{ 'Support Our Mission'|t }}</a>
+          {% endif %}
+
+          {% if content.field_hero_cta_secondary|render|trim %}
+            <div class="hero__cta hero__cta--secondary">
+              {{ content.field_hero_cta_secondary }}
+            </div>
+          {% else %}
+            <a href="/stories" class="btn btn-secondary btn-large">{{ 'Read Stories'|t }}</a>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

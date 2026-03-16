@@ -1,0 +1,23 @@
+uuid: f1000005-0000-0000-0000-000000000003
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_featured_cta_url
+  module:
+    - link
+id: block_content.featured_story.field_featured_cta_url
+field_name: field_featured_cta_url
+entity_type: block_content
+bundle: featured_story
+label: 'Button Link'
+description: 'Optional override link. If empty, the button links to the selected story.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

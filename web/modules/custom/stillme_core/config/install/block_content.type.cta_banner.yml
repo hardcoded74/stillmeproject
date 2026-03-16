@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000006
+langcode: en
+status: true
+dependencies: {  }
+id: cta_banner
+label: 'Call to Action Banner'
+revision: 1
+description: 'Full-width call-to-action banner for donations, newsletter signups, or other key actions.'

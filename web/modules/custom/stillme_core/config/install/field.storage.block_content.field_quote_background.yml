@@ -1,0 +1,30 @@
+uuid: e1000007-0000-0000-0000-000000000003
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_quote_background
+field_name: field_quote_background
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light
+      label: Light
+    -
+      value: blue
+      label: Blue
+    -
+      value: teal
+      label: Teal
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

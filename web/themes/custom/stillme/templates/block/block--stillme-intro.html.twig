@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Still Me Project - Intro / Why It Matters block template.
+ *
+ * Displays an introductory section with:
+ * - .section wrapper
+ * - Heading (field_intro_heading)
+ * - Short text (field_intro_text)
+ * - Optional image area (field_intro_image)
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-intro',
+    'section',
+    'section--intro',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ label|default('Why It Matters'|t) }}">
+  <div class="container">
+
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div class="section__header text-center">
+
+      {# -- Section Heading -- #}
+      {% if content.field_intro_heading|render|trim %}
+        <h2 class="section__heading">
+          {{ content.field_intro_heading }}
+        </h2>
+      {% elseif label %}
+        <h2 class="section__heading">{{ label }}</h2>
+      {% else %}
+        <h2 class="section__heading">{{ 'Why It Matters'|t }}</h2>
+      {% endif %}
+
+      {# -- Intro Text -- #}
+      {% if content.field_intro_text|render|trim %}
+        <div class="section__intro-text">
+          {{ content.field_intro_text }}
+        </div>
+      {% else %}
+        <div class="section__intro-text">
+          <p>{{ 'Every person has a story worth preserving. Memory loss can challenge identity, but it can never erase who someone truly is.'|t }}</p>
+        </div>
+      {% endif %}
+
+    </div>
+
+    {# -- Optional Image -- #}
+    {% if content.field_intro_image|render|trim %}
+      <div class="section__image">
+        {{ content.field_intro_image }}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

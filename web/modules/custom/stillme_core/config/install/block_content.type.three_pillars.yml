@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000003
+langcode: en
+status: true
+dependencies: {  }
+id: three_pillars
+label: 'Three Column Cards'
+revision: 1
+description: 'Three-column card layout for pillars, services, or key points. Each card has an icon, title, text, and link.'

@@ -1,0 +1,21 @@
+uuid: f1000003-0000-0000-0000-000000003003
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.three_pillars
+    - field.storage.block_content.field_pillar_3_text
+  module:
+    - text
+id: block_content.three_pillars.field_pillar_3_text
+field_name: field_pillar_3_text
+entity_type: block_content
+bundle: three_pillars
+label: 'Third Card Text'
+description: 'Body text for the third card.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

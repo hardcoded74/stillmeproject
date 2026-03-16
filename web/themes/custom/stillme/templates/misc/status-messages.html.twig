@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Still Me Project - Status messages template.
+ *
+ * Displays Drupal status, warning, and error messages in a styled format.
+ *
+ * Available variables:
+ * - message_list: Keyed array of messages grouped by type:
+ *   - status: Status messages.
+ *   - warning: Warning messages.
+ *   - error: Error messages.
+ * - status_headings: Keyed array of status headings by type.
+ * - attributes: HTML attributes for the outer element.
+ *
+ * @see template_preprocess_status_messages()
+ */
+#}
+
+<div data-drupal-messages>
+  {% for type, messages in message_list %}
+    {%
+      set classes = [
+        'messages',
+        'messages--' ~ type,
+      ]
+    %}
+
+    <div{{ attributes.addClass(classes) }} role="{{ type == 'error' ? 'alert' : 'status' }}" aria-label="{{ status_headings[type] }}">
+
+      {% if status_headings[type] %}
+        <h2 class="sr-only">{{ status_headings[type] }}</h2>
+      {% endif %}
+
+      <div class="messages__content">
+        {% if messages|length > 1 %}
+          <ul class="messages__list">
+            {% for message in messages %}
+              <li class="messages__item">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="messages__item">{{ messages|first }}</p>
+        {% endif %}
+      </div>
+
+      {# Dismiss button #}
+      <button type="button" class="messages__close" aria-label="{{ 'Close message'|t }}">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+    </div>
+
+    {# Reset classes for next iteration #}
+    {% set attributes = attributes.removeClass(classes) %}
+  {% endfor %}
+</div>

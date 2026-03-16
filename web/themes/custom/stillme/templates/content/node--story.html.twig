@@ -1,0 +1,122 @@
+{#
+/**
+ * @file
+ * Still Me Project - Story/Reflection node (full view).
+ *
+ * Displays a story with:
+ * - Featured image (full width or hero-style)
+ * - Title, date, category/tag
+ * - Body with .content-width for readability
+ * - Related stories section placeholder
+ * - CTA at bottom
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-story',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }} role="article" aria-label="{{ label }}">
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# ========== Featured Image (Hero Style) ========== #}
+  {% if content.field_image|render|trim %}
+    <div class="story__hero-image">
+      {{ content.field_image }}
+    </div>
+  {% endif %}
+
+  {# ========== Story Header ========== #}
+  <div class="content-width">
+    <header class="story__header">
+
+      {# -- Category / Tags -- #}
+      {% if content.field_category|render|trim %}
+        <div class="story__category">
+          {{ content.field_category }}
+        </div>
+      {% endif %}
+
+      {# -- Title -- #}
+      {% if label %}
+        <h1{{ title_attributes.addClass('story__title') }}>{{ label }}</h1>
+      {% endif %}
+
+      {# -- Date & Meta -- #}
+      <div class="story__meta">
+        {% if date %}
+          <time class="story__date" datetime="{{ node.getCreatedTime()|date('Y-m-d') }}">
+            {{ date }}
+          </time>
+        {% endif %}
+
+        {% if content.field_tags|render|trim %}
+          <div class="story__tags">
+            {{ content.field_tags }}
+          </div>
+        {% endif %}
+      </div>
+
+    </header>
+  </div>
+
+  {# ========== Story Body ========== #}
+  <div class="content-width">
+    <div{{ content_attributes.addClass('node__content', 'story__content') }}>
+
+      {% if content.body|render|trim %}
+        <div class="story__body">
+          {{ content.body }}
+        </div>
+      {% endif %}
+
+      {# Render remaining fields #}
+      {% set rendered_fields = ['field_image', 'field_category', 'field_tags', 'body', 'field_cta'] %}
+      {% for key, item in content if key|first != '#' and key not in rendered_fields %}
+        {{ item }}
+      {% endfor %}
+
+    </div>
+  </div>
+
+  {# ========== Related Stories Placeholder ========== #}
+  <div class="section story__related">
+    <div class="container">
+      <h2 class="story__related-heading">{{ 'More Stories'|t }}</h2>
+      <div class="grid-3">
+        {# Related stories will be rendered via a views block placed here #}
+        {# Placeholder: related story cards will appear in this grid #}
+      </div>
+    </div>
+  </div>
+
+  {# ========== CTA Section ========== #}
+  {% if content.field_cta|render|trim %}
+    <div class="cta-section bg-blue text-white">
+      <div class="container text-center">
+        {{ content.field_cta }}
+      </div>
+    </div>
+  {% else %}
+    {# Default CTA fallback #}
+    <div class="cta-section bg-blue text-white">
+      <div class="container text-center">
+        <h2>{{ 'Every Story Matters'|t }}</h2>
+        <p>{{ 'Help us preserve the identities and memories that make each person unique.'|t }}</p>
+        <a href="/donate" class="btn btn-gold btn-large">{{ 'Support Our Mission'|t }}</a>
+      </div>
+    </div>
+  {% endif %}
+
+</article>

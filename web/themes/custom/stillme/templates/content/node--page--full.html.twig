@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Still Me Project - Basic page node (full view mode).
+ *
+ * Full view mode for basic pages. Extends the same layout as node--page
+ * but can be customized independently for the full display.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-page',
+    'node--view-mode-full',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }} role="article" aria-label="{{ label }}">
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# ========== Page Hero / Banner ========== #}
+  <div class="page-hero">
+    <div class="container">
+      {% if label %}
+        <h1{{ title_attributes.addClass('page-hero__title') }}>{{ label }}</h1>
+      {% endif %}
+
+      {# -- Intro Text -- #}
+      {% if content.field_intro_text|render|trim %}
+        <div class="page-hero__intro">
+          {{ content.field_intro_text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {# ========== Featured Image ========== #}
+  {% if content.field_image|render|trim %}
+    <div class="node__featured-image">
+      <div class="container">
+        {{ content.field_image }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# ========== Body Content ========== #}
+  <div class="content-width">
+    <div{{ content_attributes.addClass('node__content') }}>
+
+      {% if content.body|render|trim %}
+        <div class="node__body">
+          {{ content.body }}
+        </div>
+      {% endif %}
+
+      {# Render remaining content fields #}
+      {% set rendered_fields = ['field_intro_text', 'field_image', 'body', 'field_cta'] %}
+      {% for key, item in content if key|first != '#' and key not in rendered_fields %}
+        {{ item }}
+      {% endfor %}
+
+    </div>
+  </div>
+
+  {# ========== Optional CTA Block ========== #}
+  {% if content.field_cta|render|trim %}
+    <div class="section cta-section cta-section--page bg-teal text-white">
+      <div class="container text-center">
+        {{ content.field_cta }}
+      </div>
+    </div>
+  {% endif %}
+
+</article>

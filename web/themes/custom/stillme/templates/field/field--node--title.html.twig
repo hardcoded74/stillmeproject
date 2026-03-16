@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Still Me Project - Node title field template.
+ *
+ * Renders the node title without extra wrapper markup when displayed
+ * as part of the node template (the node template handles the heading).
+ *
+ * @see template_preprocess_field()
+ */
+#}
+
+{% for item in items %}
+  <span{{ attributes.addClass('field', 'field--name-title') }}>{{ item.content }}</span>
+{% endfor %}

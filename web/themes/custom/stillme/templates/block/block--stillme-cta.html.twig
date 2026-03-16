@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Still Me Project - CTA / Donation section block template.
+ *
+ * Displays a call-to-action section with:
+ * - .cta-section with strong background (deep blue or teal)
+ * - Headline
+ * - Short text
+ * - 1-2 buttons
+ * - White text on dark background
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{#
+  Allow background color to be set via field.
+  Defaults to bg-blue if not specified.
+#}
+{% set bg_class = content.field_cta_background['#items'].value|default('bg-blue') %}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-cta',
+    'cta-section',
+    bg_class,
+    'text-white',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ label|default('Take Action'|t) }}">
+  <div class="container text-center">
+
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {# -- Headline -- #}
+    {% if content.field_cta_heading|render|trim %}
+      <h2 class="cta-section__heading">
+        {{ content.field_cta_heading }}
+      </h2>
+    {% elseif label %}
+      <h2 class="cta-section__heading">{{ label }}</h2>
+    {% else %}
+      <h2 class="cta-section__heading">{{ 'Make a Difference Today'|t }}</h2>
+    {% endif %}
+
+    {# -- Short Text -- #}
+    {% if content.field_cta_text|render|trim %}
+      <div class="cta-section__text">
+        {{ content.field_cta_text }}
+      </div>
+    {% else %}
+      <div class="cta-section__text">
+        <p>{{ 'Your support helps preserve the stories and identities of those affected by memory loss. Every contribution matters.'|t }}</p>
+      </div>
+    {% endif %}
+
+    {# -- CTA Buttons -- #}
+    <div class="cta-section__actions">
+      {% if content.field_cta_primary|render|trim %}
+        <div class="cta-section__btn">
+          {{ content.field_cta_primary }}
+        </div>
+      {% else %}
+        <a href="/donate" class="btn btn-gold btn-large">{{ 'Donate Now'|t }}</a>
+      {% endif %}
+
+      {% if content.field_cta_secondary|render|trim %}
+        <div class="cta-section__btn">
+          {{ content.field_cta_secondary }}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>

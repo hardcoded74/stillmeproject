@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Still Me Project - Stories listing rows (unformatted) template.
+ *
+ * Renders story teasers in a responsive grid layout using .grid-3.
+ *
+ * Available variables:
+ * - title: The title of this group of rows (if grouped).
+ * - rows: A list of rows, each containing:
+ *   - attributes: Row-level HTML attributes.
+ *   - content: The rendered row content (story teaser).
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+
+{% if title %}
+  <h3 class="view__group-title">{{ title }}</h3>
+{% endif %}
+
+<div class="grid-3 stories-grid">
+  {% for row in rows %}
+    <div{{ row.attributes.addClass('stories-grid__item') }}>
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Still Me Project - Header region template.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% if content %}
+  <div{{ attributes.addClass('region', 'region--header') }} role="banner">
+    {{ content }}
+  </div>
+{% endif %}

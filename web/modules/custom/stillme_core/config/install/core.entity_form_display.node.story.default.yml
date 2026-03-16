@@ -1,0 +1,132 @@
+uuid: a4000001-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.story.field_hero_heading
+    - field.field.node.story.field_intro_text
+    - field.field.node.story.field_feature_image
+    - field.field.node.story.field_excerpt
+    - field.field.node.story.field_publish_date
+    - field.field.node.story.field_category
+    - field.field.node.story.field_featured
+    - node.type.story
+  module:
+    - datetime
+    - media_library
+    - text
+id: node.story.default
+targetEntityType: node
+bundle: story
+mode: default
+content:
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Story title'
+    third_party_settings: {  }
+  field_hero_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Override hero heading (optional)'
+    third_party_settings: {  }
+  field_excerpt:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 3
+      placeholder: 'Brief summary for listing pages...'
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_feature_image:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  body:
+    type: text_textarea_with_summary
+    weight: 5
+    region: content
+    settings:
+      rows: 12
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_publish_date:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_category:
+    type: entity_reference_autocomplete_tags
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'Start typing a category...'
+    third_party_settings: {  }
+  field_featured:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 101
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 102
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 103
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 104
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden: {  }

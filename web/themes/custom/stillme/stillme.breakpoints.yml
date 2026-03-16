@@ -1,0 +1,31 @@
+stillme.mobile:
+  label: Mobile
+  mediaQuery: '(max-width: 599px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+stillme.tablet:
+  label: Tablet
+  mediaQuery: '(min-width: 600px) and (max-width: 959px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+
+stillme.desktop:
+  label: Desktop
+  mediaQuery: '(min-width: 960px) and (max-width: 1199px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+
+stillme.wide:
+  label: Wide
+  mediaQuery: '(min-width: 1200px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x

@@ -1,0 +1,23 @@
+name: Still Me
+type: theme
+description: 'A warm, trustworthy, and donor-friendly theme for the Still Me Project nonprofit website.'
+core_version_requirement: ^10 || ^11
+base theme: false
+
+libraries:
+  - stillme/google-fonts
+  - stillme/global-styling
+  - stillme/global-scripts
+
+regions:
+  header: Header
+  primary_menu: 'Primary Menu'
+  hero: Hero
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  help: Help
+  content: Content
+  sidebar_first: 'Sidebar First'
+  footer_top: 'Footer Top'
+  footer: Footer
+  footer_bottom: 'Footer Bottom'

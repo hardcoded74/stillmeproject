@@ -1,0 +1,19 @@
+uuid: f1000004-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.split_content
+    - field.storage.block_content.field_split_heading
+id: block_content.split_content.field_split_heading
+field_name: field_split_heading
+entity_type: block_content
+bundle: split_content
+label: 'Content Heading'
+description: 'Heading displayed in the text column.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

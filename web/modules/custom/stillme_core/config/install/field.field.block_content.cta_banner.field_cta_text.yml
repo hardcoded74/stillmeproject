@@ -1,0 +1,21 @@
+uuid: f1000006-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_banner
+    - field.storage.block_content.field_cta_text
+  module:
+    - text
+id: block_content.cta_banner.field_cta_text
+field_name: field_cta_text
+entity_type: block_content
+bundle: cta_banner
+label: 'Banner Text'
+description: 'Supporting text for the call-to-action banner.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,19 @@
+uuid: e1000006-0000-0000-0000-000000000004
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - link
+id: block_content.field_cta_primary_url
+field_name: field_cta_primary_url
+entity_type: block_content
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

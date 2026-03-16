@@ -1,0 +1,28 @@
+uuid: f1000001-0000-0000-0000-000000000007
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_hero_image
+  module:
+    - media
+id: block_content.hero.field_hero_image
+field_name: field_hero_image
+entity_type: block_content
+bundle: hero
+label: 'Hero Background Image'
+description: 'Background or feature image for the hero banner.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

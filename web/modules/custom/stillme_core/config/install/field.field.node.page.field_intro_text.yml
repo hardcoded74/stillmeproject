@@ -1,0 +1,21 @@
+uuid: c1000001-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.page
+  module:
+    - text
+id: node.page.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: page
+label: 'Intro Text'
+description: 'Introductory paragraph displayed below the hero heading.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

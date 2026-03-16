@@ -1,0 +1,406 @@
+/* ==========================================================================
+   STILL ME PROJECT - Layout System
+   Containers, grids, regions, and structural layout.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Container
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+@media (max-width: 599px) {
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Section
+   -------------------------------------------------------------------------- */
+.section {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.section--sm {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.section--lg {
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-5xl);
+}
+
+@media (max-width: 599px) {
+  .section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .section--lg {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Content Width (for readable articles)
+   -------------------------------------------------------------------------- */
+.content-width {
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   Grid Utilities
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+/* Grid responsive breakpoints */
+@media (max-width: 599px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1199px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Two-Column Layout
+   -------------------------------------------------------------------------- */
+.layout-two-col {
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-width);
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.layout-two-col--reverse {
+  grid-template-columns: var(--sidebar-width) 1fr;
+}
+
+@media (max-width: 959px) {
+  .layout-two-col,
+  .layout-two-col--reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Page Layout (Regions)
+   -------------------------------------------------------------------------- */
+.layout-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.region-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.region-hero {
+  width: 100%;
+}
+
+.region-highlighted {
+  padding: var(--space-md) 0;
+}
+
+.region-breadcrumb {
+  padding: var(--space-md) 0;
+}
+
+.region-help {
+  padding: var(--space-md) 0;
+}
+
+.region-content {
+  flex: 1;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
+}
+
+.region-sidebar-first {
+  padding-top: var(--space-2xl);
+}
+
+.region-footer-top {
+  padding: var(--space-2xl) 0;
+}
+
+.region-footer {
+  padding: var(--space-3xl) 0;
+}
+
+.region-footer-bottom {
+  padding: var(--space-lg) 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   Header Layout
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  transition: box-shadow var(--transition-base);
+}
+
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.site-header__logo img,
+.site-header__logo svg {
+  height: 44px;
+  width: auto;
+}
+
+.site-header__logo-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-deep-blue);
+  white-space: nowrap;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 599px) {
+  .site-header__inner {
+    height: 64px;
+    padding: 0 var(--space-md);
+  }
+
+  .site-header__logo img,
+  .site-header__logo svg {
+    height: 36px;
+  }
+
+  .site-header__logo-text {
+    font-size: var(--text-md);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Footer Layout
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-dark-text);
+  color: var(--color-light-gray);
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-lg);
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-sm);
+  opacity: 0.7;
+}
+
+@media (max-width: 959px) {
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 599px) {
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Hero Section Layout
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 480px;
+  padding: var(--space-4xl) var(--space-lg);
+  overflow: hidden;
+}
+
+.hero--large {
+  min-height: 600px;
+  padding: var(--space-5xl) var(--space-lg);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 599px) {
+  .hero {
+    min-height: 360px;
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .hero--large {
+    min-height: 420px;
+    padding: var(--space-3xl) var(--space-md);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Split Layout (Two-Column Content)
+   -------------------------------------------------------------------------- */
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.split-section--reverse {
+  direction: rtl;
+}
+
+.split-section--reverse > * {
+  direction: ltr;
+}
+
+.split-text {
+  padding: var(--space-lg) 0;
+}
+
+.split-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 959px) {
+  .split-section,
+  .split-section--reverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    direction: ltr;
+  }
+
+  .split-image {
+    order: -1;
+  }
+}

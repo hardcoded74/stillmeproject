@@ -1,0 +1,30 @@
+uuid: c1000002-0000-0000-0000-000000000006
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.story
+    - taxonomy.vocabulary.story_category
+  module:
+    - taxonomy
+id: node.story.field_category
+field_name: field_category
+entity_type: node
+bundle: story
+label: 'Category'
+description: 'Assign one or more categories to help visitors find related stories.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      story_category: story_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+field_type: entity_reference

@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies: {  }
+id: intro_section
+label: 'Intro Section'
+revision: 1
+description: 'Introduction section with heading, body text, and optional image. Used for "Why It Matters" or similar areas.'

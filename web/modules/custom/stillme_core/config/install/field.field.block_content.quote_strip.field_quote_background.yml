@@ -1,0 +1,23 @@
+uuid: f1000007-0000-0000-0000-000000000003
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_strip
+    - field.storage.block_content.field_quote_background
+  module:
+    - options
+id: block_content.quote_strip.field_quote_background
+field_name: field_quote_background
+entity_type: block_content
+bundle: quote_strip
+label: 'Background Style'
+description: 'Choose a background style for the quote strip.'
+required: false
+translatable: true
+default_value:
+  -
+    value: light
+default_value_callback: ''
+settings: {  }
+field_type: list_string

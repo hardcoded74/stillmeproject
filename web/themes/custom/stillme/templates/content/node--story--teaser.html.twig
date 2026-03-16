@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Still Me Project - Story teaser template (for listings).
+ *
+ * Displays a story card with:
+ * - .story-card wrapper
+ * - Optional image thumbnail
+ * - Title as link
+ * - Date
+ * - Excerpt / trimmed body
+ * - Read more link
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-story',
+    'node--view-mode-teaser',
+    'story-card',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }} role="article" aria-label="{{ label }}">
+
+  {# -- Thumbnail Image -- #}
+  {% if content.field_image|render|trim %}
+    <div class="story-card__image">
+      <a href="{{ url }}" aria-hidden="true" tabindex="-1">
+        {{ content.field_image }}
+      </a>
+    </div>
+  {% endif %}
+
+  {# -- Card Body -- #}
+  <div class="story-card__body">
+
+    {# -- Category -- #}
+    {% if content.field_category|render|trim %}
+      <div class="story-card__category">
+        {{ content.field_category }}
+      </div>
+    {% endif %}
+
+    {# -- Title -- #}
+    {{ title_prefix }}
+    <h3{{ title_attributes.addClass('story-card__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h3>
+    {{ title_suffix }}
+
+    {# -- Date -- #}
+    {% if date %}
+      <time class="story-card__date" datetime="{{ node.getCreatedTime()|date('Y-m-d') }}">
+        {{ date }}
+      </time>
+    {% endif %}
+
+    {# -- Excerpt / Trimmed Body -- #}
+    {% if content.body|render|trim %}
+      <div class="story-card__excerpt">
+        {{ content.body }}
+      </div>
+    {% endif %}
+
+    {# -- Read More Link -- #}
+    <a href="{{ url }}" class="btn btn-outline story-card__link" aria-label="{{ 'Read more about'|t }} {{ label }}">
+      {{ 'Read More'|t }}
+    </a>
+
+  </div>
+
+</article>

@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies: {  }
+id: hero
+label: 'Homepage Hero'
+revision: 1
+description: 'Full-width hero banner with heading, subheading, image, and call-to-action buttons.'

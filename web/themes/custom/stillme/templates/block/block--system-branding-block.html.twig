@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Still Me Project - System branding block template.
+ *
+ * Displays the site logo and/or site name.
+ *
+ * Available variables:
+ * - site_logo: Logo image path.
+ * - site_name: The name of the site.
+ * - site_slogan: The slogan of the site.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-system-branding',
+    'site-branding',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% if site_logo %}
+    <a href="{{ path('<front>') }}" rel="home" class="site-branding__logo" aria-label="{{ 'Home'|t }}">
+      <img src="{{ site_logo }}" alt="{{ 'Still Me Project logo'|t }}" class="site-branding__img" />
+    </a>
+  {% endif %}
+
+  {% if site_name %}
+    <div class="site-branding__name">
+      <a href="{{ path('<front>') }}" rel="home" class="site-branding__link">
+        {{ site_name }}
+      </a>
+    </div>
+  {% endif %}
+
+  {% if site_slogan %}
+    <div class="site-branding__slogan">
+      {{ site_slogan }}
+    </div>
+  {% endif %}
+
+</div>

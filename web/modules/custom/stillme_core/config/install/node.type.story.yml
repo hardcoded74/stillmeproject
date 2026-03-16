@@ -1,0 +1,11 @@
+uuid: a1b2c3d4-e5f6-7890-abcd-100000000002
+langcode: en
+status: true
+dependencies: {  }
+name: 'Story'
+type: story
+description: 'Stories and reflections from individuals navigating identity, resilience, and healing.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

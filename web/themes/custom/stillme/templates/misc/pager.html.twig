@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Still Me Project - Pagination template.
+ *
+ * Available variables:
+ * - heading_id: Unique heading ID for accessibility.
+ * - items: List of pager items containing:
+ *   - first: Link to the first page.
+ *   - previous: Link to the previous page.
+ *   - next: Link to the next page.
+ *   - last: Link to the last page.
+ *   - pages: Array of page number links.
+ * - current: The current page number.
+ * - ellipses: Ellipsis indicators (previous, next).
+ *
+ * @see template_preprocess_pager()
+ */
+#}
+
+{% if items %}
+  <nav class="pager" role="navigation" aria-labelledby="{{ heading_id }}">
+    <h4 id="{{ heading_id }}" class="sr-only">{{ 'Pagination'|t }}</h4>
+
+    <ul class="pager__items">
+
+      {# -- First Page -- #}
+      {% if items.first %}
+        <li class="pager__item pager__item--first">
+          <a href="{{ items.first.href }}" class="pager__link" title="{{ 'Go to first page'|t }}" aria-label="{{ 'First page'|t }}"{{ items.first.attributes }}>
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">{{ 'First page'|t }}</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {# -- Previous Page -- #}
+      {% if items.previous %}
+        <li class="pager__item pager__item--previous">
+          <a href="{{ items.previous.href }}" class="pager__link" title="{{ 'Go to previous page'|t }}" rel="prev" aria-label="{{ 'Previous page'|t }}"{{ items.previous.attributes }}>
+            <span aria-hidden="true">&lsaquo;</span>
+            <span class="sr-only">{{ 'Previous page'|t }}</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {# -- Previous Ellipsis -- #}
+      {% if ellipses.previous %}
+        <li class="pager__item pager__item--ellipsis" role="presentation" aria-hidden="true">
+          <span class="pager__ellipsis">&hellip;</span>
+        </li>
+      {% endif %}
+
+      {# -- Page Numbers -- #}
+      {% for key, item in items.pages %}
+        <li class="pager__item{{ current == key ? ' pager__item--active' : '' }}">
+          {% if current == key %}
+            {% set title = 'Current page'|t %}
+          {% else %}
+            {% set title = 'Go to page @key'|t({'@key': key}) %}
+          {% endif %}
+
+          <a href="{{ item.href }}" class="pager__link{{ current == key ? ' pager__link--active' : '' }}" title="{{ title }}"{{ item.attributes }}{% if current == key %} aria-current="page"{% endif %}>
+            <span class="sr-only">
+              {{ current == key ? 'Current page'|t : 'Page'|t }}
+            </span>
+            {{ key }}
+          </a>
+        </li>
+      {% endfor %}
+
+      {# -- Next Ellipsis -- #}
+      {% if ellipses.next %}
+        <li class="pager__item pager__item--ellipsis" role="presentation" aria-hidden="true">
+          <span class="pager__ellipsis">&hellip;</span>
+        </li>
+      {% endif %}
+
+      {# -- Next Page -- #}
+      {% if items.next %}
+        <li class="pager__item pager__item--next">
+          <a href="{{ items.next.href }}" class="pager__link" title="{{ 'Go to next page'|t }}" rel="next" aria-label="{{ 'Next page'|t }}"{{ items.next.attributes }}>
+            <span class="sr-only">{{ 'Next page'|t }}</span>
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {# -- Last Page -- #}
+      {% if items.last %}
+        <li class="pager__item pager__item--last">
+          <a href="{{ items.last.href }}" class="pager__link" title="{{ 'Go to last page'|t }}" aria-label="{{ 'Last page'|t }}"{{ items.last.attributes }}>
+            <span class="sr-only">{{ 'Last page'|t }}</span>
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      {% endif %}
+
+    </ul>
+  </nav>
+{% endif %}

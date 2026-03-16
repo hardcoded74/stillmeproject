@@ -1,0 +1,23 @@
+uuid: f1000006-0000-0000-0000-000000000006
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_banner
+    - field.storage.block_content.field_cta_secondary_url
+  module:
+    - link
+id: block_content.cta_banner.field_cta_secondary_url
+field_name: field_cta_secondary_url
+entity_type: block_content
+bundle: cta_banner
+label: 'Secondary Button Link'
+description: 'URL for the secondary action button.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

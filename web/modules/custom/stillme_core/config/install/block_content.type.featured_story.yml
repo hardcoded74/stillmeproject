@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000005
+langcode: en
+status: true
+dependencies: {  }
+id: featured_story
+label: 'Featured Story Highlight'
+revision: 1
+description: 'Highlights a specific story with a link to read more. References an existing Story node.'

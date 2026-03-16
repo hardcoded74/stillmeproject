@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Still Me Project - Featured Story block template.
+ *
+ * Displays a featured story card with:
+ * - .section wrapper
+ * - Featured card with optional image thumbnail
+ * - Story title, excerpt
+ * - CTA link
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-featured-story',
+    'section',
+    'section--featured-story',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ label|default('Featured Story'|t) }}">
+  <div class="container">
+
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {# -- Section Heading -- #}
+    <div class="section__header">
+      {% if content.field_featured_heading|render|trim %}
+        <h2 class="section__heading">
+          {{ content.field_featured_heading }}
+        </h2>
+      {% elseif label %}
+        <h2 class="section__heading">{{ label }}</h2>
+      {% else %}
+        <h2 class="section__heading">{{ 'A Story Worth Sharing'|t }}</h2>
+      {% endif %}
+    </div>
+
+    {# -- Featured Story Card -- #}
+    <div class="card card--featured-story">
+      <div class="grid-2">
+
+        {# Image Thumbnail #}
+        <div class="card__image">
+          {% if content.field_featured_image|render|trim %}
+            {{ content.field_featured_image }}
+          {% else %}
+            <div class="card__image-placeholder" aria-hidden="true"></div>
+          {% endif %}
+        </div>
+
+        {# Story Details #}
+        <div class="card__body">
+
+          {# Story Title #}
+          {% if content.field_featured_title|render|trim %}
+            <h3 class="card__title">
+              {{ content.field_featured_title }}
+            </h3>
+          {% else %}
+            <h3 class="card__title">{{ 'A Journey of Remembrance'|t }}</h3>
+          {% endif %}
+
+          {# Story Excerpt #}
+          {% if content.field_featured_excerpt|render|trim %}
+            <div class="card__excerpt">
+              {{ content.field_featured_excerpt }}
+            </div>
+          {% else %}
+            <div class="card__excerpt">
+              <p>{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.'|t }}</p>
+            </div>
+          {% endif %}
+
+          {# CTA Link #}
+          {% if content.field_featured_link|render|trim %}
+            <div class="card__cta">
+              {{ content.field_featured_link }}
+            </div>
+          {% else %}
+            <a href="/stories" class="btn btn-primary">{{ 'Read This Story'|t }}</a>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

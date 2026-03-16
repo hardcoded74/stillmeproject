@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Still Me Core module.
+ */
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function stillme_core_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  // Add any custom theme suggestions here as needed.
+}

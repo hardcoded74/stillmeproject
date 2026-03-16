@@ -1,0 +1,21 @@
+uuid: f1000007-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_strip
+    - field.storage.block_content.field_quote_text
+  module:
+    - text
+id: block_content.quote_strip.field_quote_text
+field_name: field_quote_text
+entity_type: block_content
+bundle: quote_strip
+label: 'Quote Text'
+description: 'The quote or reflection text to display.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

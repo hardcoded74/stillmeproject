@@ -1,0 +1,23 @@
+uuid: f1000004-0000-0000-0000-000000000005
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.split_content
+    - field.storage.block_content.field_split_cta_url
+  module:
+    - link
+id: block_content.split_content.field_split_cta_url
+field_name: field_split_cta_url
+entity_type: block_content
+bundle: split_content
+label: 'Button Link'
+description: 'URL for the call-to-action button.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

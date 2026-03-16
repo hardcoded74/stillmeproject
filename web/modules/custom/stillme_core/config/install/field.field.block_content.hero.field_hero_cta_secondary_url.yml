@@ -1,0 +1,23 @@
+uuid: f1000001-0000-0000-0000-000000000006
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_hero_cta_secondary_url
+  module:
+    - link
+id: block_content.hero.field_hero_cta_secondary_url
+field_name: field_hero_cta_secondary_url
+entity_type: block_content
+bundle: hero
+label: 'Secondary Button Link'
+description: 'URL for the secondary call-to-action button.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

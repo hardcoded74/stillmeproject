@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the Still Me Core module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function stillme_core_install() {
+  \Drupal::messenger()->addStatus(t('Still Me Core module has been installed. Content types, block types, and views are now available.'));
+  \Drupal::messenger()->addStatus(t('Please configure your homepage layout using Layout Builder and place the custom block types as needed.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function stillme_core_uninstall() {
+  \Drupal::messenger()->addStatus(t('Still Me Core module has been uninstalled.'));
+}

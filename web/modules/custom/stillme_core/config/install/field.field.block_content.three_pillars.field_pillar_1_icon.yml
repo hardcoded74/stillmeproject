@@ -1,0 +1,19 @@
+uuid: f1000003-0000-0000-0000-000000001001
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.three_pillars
+    - field.storage.block_content.field_pillar_1_icon
+id: block_content.three_pillars.field_pillar_1_icon
+field_name: field_pillar_1_icon
+entity_type: block_content
+bundle: three_pillars
+label: 'First Card Icon'
+description: 'Icon class name or symbol for the first card (e.g. "heart", "shield", "users").'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

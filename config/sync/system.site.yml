@@ -1,0 +1,12 @@
+uuid: a0000001-0000-0000-0000-000000000001
+name: 'Still Me Project'
+mail: admin@stillmeproject.org
+slogan: 'Reclaiming identity. Restoring dignity. Rebuilding lives.'
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en

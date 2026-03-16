@@ -1,0 +1,30 @@
+uuid: e1000006-0000-0000-0000-000000000007
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_cta_background
+field_name: field_cta_background
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: blue
+      label: Blue
+    -
+      value: teal
+      label: Teal
+    -
+      value: gold
+      label: Gold
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

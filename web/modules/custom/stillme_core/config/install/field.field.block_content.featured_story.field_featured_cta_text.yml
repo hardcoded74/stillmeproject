@@ -1,0 +1,21 @@
+uuid: f1000005-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_featured_cta_text
+id: block_content.featured_story.field_featured_cta_text
+field_name: field_featured_cta_text
+entity_type: block_content
+bundle: featured_story
+label: 'Button Text'
+description: 'Label for the read more button (e.g. "Read Their Story").'
+required: false
+translatable: true
+default_value:
+  -
+    value: 'Read Their Story'
+default_value_callback: ''
+settings: {  }
+field_type: string

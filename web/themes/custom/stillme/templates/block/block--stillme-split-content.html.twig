@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Still Me Project - Two-column split content block template.
+ *
+ * Displays a split layout section with:
+ * - .split-section wrapper
+ * - .split-text (heading, text, optional CTA)
+ * - .split-image (image area)
+ * - Supports .split-reverse class via field_split_reverse boolean
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{#
+  Determine if layout should be reversed.
+  field_split_reverse is expected to be a boolean field.
+#}
+{% set is_reversed = content.field_split_reverse['#items'].value|default(false) %}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-split-content',
+    'split-section',
+    is_reversed ? 'split-reverse',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ label|default('About'|t) }}">
+  <div class="container">
+    <div class="split-section__inner">
+
+      {{ title_prefix }}
+      {{ title_suffix }}
+
+      {# -- Text Column -- #}
+      <div class="split-text">
+
+        {# Heading #}
+        {% if content.field_split_heading|render|trim %}
+          <h2 class="split-text__heading">
+            {{ content.field_split_heading }}
+          </h2>
+        {% elseif label %}
+          <h2 class="split-text__heading">{{ label }}</h2>
+        {% endif %}
+
+        {# Body Text #}
+        {% if content.field_split_text|render|trim %}
+          <div class="split-text__body">
+            {{ content.field_split_text }}
+          </div>
+        {% else %}
+          <div class="split-text__body">
+            <p>{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'|t }}</p>
+          </div>
+        {% endif %}
+
+        {# Optional CTA Button #}
+        {% if content.field_split_cta|render|trim %}
+          <div class="split-text__cta">
+            {{ content.field_split_cta }}
+          </div>
+        {% endif %}
+
+      </div>
+
+      {# -- Image Column -- #}
+      <div class="split-image">
+        {% if content.field_split_image|render|trim %}
+          {{ content.field_split_image }}
+        {% else %}
+          {# Placeholder for image #}
+          <div class="split-image__placeholder" aria-hidden="true"></div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+{#
+/**
+ * @file
+ * Still Me Project - Form element wrapper template.
+ *
+ * Wraps individual form elements (label + input + description + errors).
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - prefix: Markup to display before the form element.
+ * - suffix: Markup to display after the form element.
+ * - required: Whether the element is required.
+ * - type: The type of the element.
+ * - name: Element name.
+ * - label: The label for the element.
+ * - label_display: Label display setting (before, after, invisible, attribute).
+ * - description: Description content.
+ * - description_display: Where the description displays (before, after, invisible).
+ * - disabled: Whether the element is disabled.
+ * - title_display: Title display setting.
+ * - errors: Validation error messages.
+ * - children: The rendered form element.
+ *
+ * @see template_preprocess_form_element()
+ */
+#}
+
+{%
+  set classes = [
+    'form-element',
+    'form-element--type-' ~ type|clean_class,
+    name ? 'form-element--name-' ~ name|clean_class,
+    disabled ? 'form-element--disabled',
+    errors ? 'form-element--has-error',
+    label_display == 'after' ? 'form-element--label-after',
+    label_display == 'before' ? 'form-element--label-before',
+    label_display == 'invisible' ? 'form-element--label-invisible',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {# -- Description (before) -- #}
+  {% if description_display == 'before' and description.content %}
+    <div class="form-element__description form-element__description--before">
+      {{ description.content }}
+    </div>
+  {% endif %}
+
+  {# -- Label (before, default) -- #}
+  {% if label_display in ['before', 'invisible'] %}
+    {{ label }}
+  {% endif %}
+
+  {# -- Prefix -- #}
+  {% if prefix %}
+    <span class="form-element__prefix">{{ prefix }}</span>
+  {% endif %}
+
+  {# -- Form Element -- #}
+  {{ children }}
+
+  {# -- Suffix -- #}
+  {% if suffix %}
+    <span class="form-element__suffix">{{ suffix }}</span>
+  {% endif %}
+
+  {# -- Label (after) -- #}
+  {% if label_display == 'after' %}
+    {{ label }}
+  {% endif %}
+
+  {# -- Errors -- #}
+  {% if errors %}
+    <div class="form-element__error" role="alert">
+      {{ errors }}
+    </div>
+  {% endif %}
+
+  {# -- Description (after, default) -- #}
+  {% if description_display in ['after', 'invisible'] and description.content %}
+    <div class="form-element__description form-element__description--after"{{ description.attributes }}>
+      {{ description.content }}
+    </div>
+  {% endif %}
+
+</div>

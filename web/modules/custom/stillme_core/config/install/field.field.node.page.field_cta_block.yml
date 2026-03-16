@@ -1,0 +1,21 @@
+uuid: c1000001-0000-0000-0000-000000000004
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cta_block
+    - node.type.page
+  module:
+    - text
+id: node.page.field_cta_block
+field_name: field_cta_block
+entity_type: node
+bundle: page
+label: 'Call to Action Content'
+description: 'Optional call-to-action block content displayed at the bottom of the page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

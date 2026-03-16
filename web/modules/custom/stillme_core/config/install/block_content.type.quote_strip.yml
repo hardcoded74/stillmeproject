@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000007
+langcode: en
+status: true
+dependencies: {  }
+id: quote_strip
+label: 'Quote / Reflection Strip'
+revision: 1
+description: 'Full-width quote or reflection strip with attribution and configurable background colour.'

@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Still Me Project - Form input element template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the input element.
+ * - children: Optional child elements (for composite inputs).
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{%
+  set classes = [
+    'form-input',
+    type ? 'form-input--' ~ type|clean_class,
+    errors ? 'form-input--error',
+  ]
+%}
+
+{% if type == 'submit' %}
+  {# Style submit buttons with .btn classes #}
+  <input{{ attributes.addClass(classes, 'btn', 'btn-primary') }} />
+{% else %}
+  <input{{ attributes.addClass(classes) }} />
+{% endif %}
+
+{{ children }}

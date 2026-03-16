@@ -1,0 +1,19 @@
+uuid: f1000001-0000-0000-0000-000000000005
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_hero_cta_secondary_text
+id: block_content.hero.field_hero_cta_secondary_text
+field_name: field_hero_cta_secondary_text
+entity_type: block_content
+bundle: hero
+label: 'Secondary Button Text'
+description: 'Label for the secondary call-to-action button.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

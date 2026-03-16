@@ -1,0 +1,151 @@
+{#
+/**
+ * @file
+ * Still Me Project - Story detail page template.
+ *
+ * Provides an article-width layout using .content-width for optimal
+ * readability of story/reflection content. No sidebar by default.
+ */
+#}
+
+{# ========== Announcement Bar (hidden by default) ========== #}
+<div class="announcement-bar" aria-label="Announcement" hidden>
+  <div class="container">
+    <p class="announcement-bar__message">Welcome to the Still Me Project.</p>
+  </div>
+</div>
+
+{# ========== Site Header ========== #}
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="site-header__inner">
+
+      {# -- Logo / Branding -- #}
+      <div class="site-header__logo">
+        <a href="{{ path('<front>') }}" rel="home" aria-label="{{ 'Home'|t }}">
+          {% if site_logo %}
+            <img src="{{ site_logo }}" alt="{{ 'Still Me Project logo'|t }}" />
+          {% else %}
+            <span class="site-name">{{ site_name }}</span>
+          {% endif %}
+        </a>
+      </div>
+
+      {# -- Primary Navigation Region -- #}
+      {% if page.primary_menu %}
+        <nav class="site-header__nav" aria-label="{{ 'Main navigation'|t }}">
+          {{ page.primary_menu }}
+        </nav>
+      {% endif %}
+
+      {# -- Mobile Menu Toggle -- #}
+      <button
+        class="site-header__menu-toggle"
+        aria-label="{{ 'Toggle navigation menu'|t }}"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        type="button"
+      >
+        <span class="sr-only">{{ 'Menu'|t }}</span>
+        <span class="hamburger-icon" aria-hidden="true"></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+{# ========== Hero Region ========== #}
+{% if page.hero %}
+  <section class="hero-region">
+    {{ page.hero }}
+  </section>
+{% endif %}
+
+{# ========== Breadcrumb Region ========== #}
+{% if page.breadcrumb %}
+  <div class="breadcrumb-region" role="navigation" aria-label="{{ 'Breadcrumb'|t }}">
+    <div class="container">
+      {{ page.breadcrumb }}
+    </div>
+  </div>
+{% endif %}
+
+{# ========== Help Region ========== #}
+{% if page.help %}
+  <div class="help-region">
+    <div class="container">
+      {{ page.help }}
+    </div>
+  </div>
+{% endif %}
+
+{# ========== Main Content (Article Width) ========== #}
+<main id="main-content" role="main" class="site-main site-main--story">
+  <a id="main-content-anchor" tabindex="-1"></a>
+
+  <div class="content-width">
+    {{ page.content }}
+  </div>
+</main>
+
+{# ========== Site Footer ========== #}
+<footer class="site-footer" role="contentinfo">
+
+  {% if page.footer_top %}
+    <div class="site-footer__top">
+      <div class="container">
+        {{ page.footer_top }}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="site-footer__main">
+    <div class="container">
+      <div class="grid-4 site-footer__columns">
+
+        <div class="site-footer__col site-footer__about">
+          <a href="{{ path('<front>') }}" rel="home" aria-label="{{ 'Home'|t }}" class="site-footer__logo">
+            {% if site_logo %}
+              <img src="{{ site_logo }}" alt="{{ 'Still Me Project logo'|t }}" />
+            {% else %}
+              <span class="site-name">{{ site_name }}</span>
+            {% endif %}
+          </a>
+          <p class="site-footer__description">
+            Preserving identity and dignity for those navigating memory loss.
+          </p>
+        </div>
+
+        <div class="site-footer__col site-footer__nav">
+          <h3 class="site-footer__heading">{{ 'Quick Links'|t }}</h3>
+          {% if page.footer %}
+            {{ page.footer }}
+          {% endif %}
+        </div>
+
+        <div class="site-footer__col site-footer__contact">
+          <h3 class="site-footer__heading">{{ 'Contact'|t }}</h3>
+          <p>{{ 'Get in touch with us.'|t }}</p>
+        </div>
+
+        <div class="site-footer__col site-footer__newsletter">
+          <h3 class="site-footer__heading">{{ 'Stay Connected'|t }}</h3>
+          <p>{{ 'Sign up for updates from the Still Me Project.'|t }}</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container">
+      {% if page.footer_bottom %}
+        {{ page.footer_bottom }}
+      {% endif %}
+      <p class="site-footer__copyright">
+        &copy; {{ 'now'|date('Y') }} {{ 'Still Me Project. All rights reserved.'|t }}
+      </p>
+    </div>
+  </div>
+
+</footer>

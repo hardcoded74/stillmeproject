@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ * Still Me Project - Three Pillars / Cards block template.
+ *
+ * Displays three pillar cards in a grid:
+ * - .section wrapper
+ * - Section heading
+ * - .grid-3 layout
+ * - 3 cards each with icon/symbol, title, text, optional link
+ *
+ * Fields expected:
+ * - field_pillars_heading: Section title
+ * - field_pillar_items: Multi-value paragraph or field collection
+ *   Each item: field_pillar_icon, field_pillar_title,
+ *              field_pillar_text, field_pillar_link
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-three-pillars',
+    'section',
+    'section--pillars',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ label|default('Our Approach'|t) }}">
+  <div class="container">
+
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {# -- Section Heading -- #}
+    <div class="section__header text-center">
+      {% if content.field_pillars_heading|render|trim %}
+        <h2 class="section__heading">
+          {{ content.field_pillars_heading }}
+        </h2>
+      {% elseif label %}
+        <h2 class="section__heading">{{ label }}</h2>
+      {% else %}
+        <h2 class="section__heading">{{ 'Our Approach'|t }}</h2>
+      {% endif %}
+    </div>
+
+    {# -- Pillar Cards Grid -- #}
+    {% if content.field_pillar_items|render|trim %}
+      <div class="grid-3">
+        {{ content.field_pillar_items }}
+      </div>
+    {% else %}
+      {# Placeholder cards when no field data is available #}
+      <div class="grid-3">
+
+        {# Card 1: Preserve #}
+        <div class="card card--pillar">
+          <div class="card__icon" aria-hidden="true">
+            <span class="pillar-icon pillar-icon--preserve"></span>
+          </div>
+          <h3 class="card__title">{{ 'Preserve'|t }}</h3>
+          <p class="card__text">
+            {{ 'We help capture and safeguard the stories, memories, and personal details that define who someone is.'|t }}
+          </p>
+        </div>
+
+        {# Card 2: Honor #}
+        <div class="card card--pillar">
+          <div class="card__icon" aria-hidden="true">
+            <span class="pillar-icon pillar-icon--honor"></span>
+          </div>
+          <h3 class="card__title">{{ 'Honor'|t }}</h3>
+          <p class="card__text">
+            {{ 'We celebrate every individual and their unique journey, ensuring they are seen and valued.'|t }}
+          </p>
+        </div>
+
+        {# Card 3: Connect #}
+        <div class="card card--pillar">
+          <div class="card__icon" aria-hidden="true">
+            <span class="pillar-icon pillar-icon--connect"></span>
+          </div>
+          <h3 class="card__title">{{ 'Connect'|t }}</h3>
+          <p class="card__text">
+            {{ 'We build bridges between caregivers, families, and communities to foster understanding and compassion.'|t }}
+          </p>
+        </div>
+
+      </div>
+    {% endif %}
+
+  </div>
+</section>

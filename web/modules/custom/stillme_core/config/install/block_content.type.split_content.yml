@@ -1,0 +1,8 @@
+uuid: d1000001-0000-0000-0000-000000000004
+langcode: en
+status: true
+dependencies: {  }
+id: split_content
+label: 'Image & Text Split'
+revision: 1
+description: 'Two-column layout with image on one side and text on the other. Layout direction can be reversed.'

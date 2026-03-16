@@ -1,0 +1,29 @@
+uuid: f1000005-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.featured_story
+    - field.storage.block_content.field_featured_story_ref
+    - node.type.story
+  module:
+    - node
+id: block_content.featured_story.field_featured_story_ref
+field_name: field_featured_story_ref
+entity_type: block_content
+bundle: featured_story
+label: 'Featured Story'
+description: 'Select the story to feature in this block.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      story: story
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

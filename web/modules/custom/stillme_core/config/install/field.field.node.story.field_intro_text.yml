@@ -1,0 +1,21 @@
+uuid: c1000002-0000-0000-0000-000000000002
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.story
+  module:
+    - text
+id: node.story.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: story
+label: 'Intro Text'
+description: 'Brief introductory text displayed before the main story content.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

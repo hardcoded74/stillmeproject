@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Still Me Project - Footer region template.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% if content %}
+  <div{{ attributes.addClass('region', 'region--footer') }} role="contentinfo">
+    {{ content }}
+  </div>
+{% endif %}

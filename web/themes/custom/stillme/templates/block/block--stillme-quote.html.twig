@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Still Me Project - Quote / Reflection strip block template.
+ *
+ * Displays a centered quote with:
+ * - Centered quote text
+ * - Optional attribution
+ * - Subtle background
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-stillme-quote',
+    'section',
+    'section--quote',
+    'bg-light',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ 'Quote'|t }}">
+  <div class="container">
+    <div class="quote-strip text-center">
+
+      {{ title_prefix }}
+      {{ title_suffix }}
+
+      {# -- Quote Text -- #}
+      <blockquote class="quote-strip__blockquote">
+        {% if content.field_quote_text|render|trim %}
+          <p class="quote-strip__text">
+            {{ content.field_quote_text }}
+          </p>
+        {% else %}
+          <p class="quote-strip__text">
+            {{ '"The story of who we are is the most important story we will ever tell."'|t }}
+          </p>
+        {% endif %}
+
+        {# -- Attribution -- #}
+        {% if content.field_quote_attribution|render|trim %}
+          <footer class="quote-strip__footer">
+            <cite class="quote-strip__attribution">
+              &mdash; {{ content.field_quote_attribution }}
+            </cite>
+          </footer>
+        {% endif %}
+      </blockquote>
+
+    </div>
+  </div>
+</section>

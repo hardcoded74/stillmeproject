@@ -1,0 +1,103 @@
+{#
+/**
+ * @file
+ * Still Me Project - Stories listing view wrapper template.
+ *
+ * Wraps the stories view with appropriate section styling and heading.
+ *
+ * Available variables:
+ * - title: The title of this group of rows (from view header).
+ * - header: The optional header content.
+ * - footer: The optional footer content.
+ * - rows: The results of the view query.
+ * - empty: Content to display if no results.
+ * - pager: The pager output.
+ * - exposed: Exposed form widgets.
+ * - feed_icons: Optional feed icons.
+ * - more: An optional link to the next page of results.
+ * - attachment_before / attachment_after: Optional view attachments.
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+
+{%
+  set classes = [
+    'view',
+    'view--stories',
+    'section',
+  ]
+%}
+
+<section{{ attributes.addClass(classes) }} aria-label="{{ 'Stories and Reflections'|t }}">
+  <div class="container">
+
+    {# -- View Header -- #}
+    {% if header %}
+      <div class="view__header">
+        {{ header }}
+      </div>
+    {% endif %}
+
+    {# -- Exposed Filters -- #}
+    {% if exposed %}
+      <div class="view__filters">
+        {{ exposed }}
+      </div>
+    {% endif %}
+
+    {# -- Attachment Before -- #}
+    {% if attachment_before %}
+      <div class="view__attachment view__attachment--before">
+        {{ attachment_before }}
+      </div>
+    {% endif %}
+
+    {# -- View Content (Story Cards) -- #}
+    {% if rows %}
+      <div class="view__content">
+        {{ rows }}
+      </div>
+    {% elseif empty %}
+      <div class="view__empty text-center">
+        {{ empty }}
+      </div>
+    {% endif %}
+
+    {# -- Pager -- #}
+    {% if pager %}
+      <div class="view__pager">
+        {{ pager }}
+      </div>
+    {% endif %}
+
+    {# -- Attachment After -- #}
+    {% if attachment_after %}
+      <div class="view__attachment view__attachment--after">
+        {{ attachment_after }}
+      </div>
+    {% endif %}
+
+    {# -- View Footer -- #}
+    {% if footer %}
+      <div class="view__footer">
+        {{ footer }}
+      </div>
+    {% endif %}
+
+    {# -- More Link -- #}
+    {% if more %}
+      <div class="view__more text-center">
+        {{ more }}
+      </div>
+    {% endif %}
+
+    {# -- Feed Icons -- #}
+    {% if feed_icons %}
+      <div class="view__feed-icons">
+        {{ feed_icons }}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,0 +1,19 @@
+uuid: f1000002-0000-0000-0000-000000000001
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.intro_section
+    - field.storage.block_content.field_intro_heading
+id: block_content.intro_section.field_intro_heading
+field_name: field_intro_heading
+entity_type: block_content
+bundle: intro_section
+label: 'Section Heading'
+description: 'Heading for the intro section, e.g. "Why It Matters".'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
