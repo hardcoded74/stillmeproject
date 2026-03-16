@@ -2,16 +2,33 @@
   <a href="#main-content" class="visually-hidden-skip">Skip to main content</a>
 
   <!-- ============================================
-       MASTHEAD — Brand Banner
+       MASTHEAD — Logo + Connection Collage
        ============================================ -->
   <div class="masthead" role="banner">
-    <a href="/" class="masthead__banner-link" aria-label="Still Me Project — Home">
-      <img src="/images/masthead-banner.png" alt="Still Me Project — Honoring identity, strengthening connection" class="masthead__banner">
-    </a>
+    <div class="masthead__inner">
+
+      <!-- Logo (left side) -->
+      <a href="/" class="masthead__logo" aria-label="Still Me Project — Home">
+        <img src="/images/smp-logo-full.png" alt="Still Me Project">
+      </a>
+
+      <!-- Connection Collage (right side, fades in from white) -->
+      <div class="masthead__collage" aria-hidden="true">
+        <div class="masthead__collage-images">
+          <img src="/images/collage-2.jpg" alt="" class="masthead__collage-img">
+          <img src="/images/collage-4.jpg" alt="" class="masthead__collage-img">
+          <img src="/images/collage-1.jpg" alt="" class="masthead__collage-img">
+          <img src="/images/collage-3.jpg" alt="" class="masthead__collage-img">
+        </div>
+        <!-- Gradient mask: fades collage into white on the left edge -->
+        <div class="masthead__collage-mask"></div>
+      </div>
+
+    </div>
   </div>
 
   <!-- ============================================
-       NAVIGATION ROW
+       NAVIGATION ROW (sticky)
        ============================================ -->
   <header class="site-header">
     <div class="container site-header__inner">

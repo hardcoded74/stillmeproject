@@ -290,30 +290,80 @@ strong {
 
 
 /* ----------------------------------------------------------------
-   MASTHEAD (Brand Banner)
+   MASTHEAD — Logo + Connection Collage
    ---------------------------------------------------------------- */
 .masthead {
   background-color: var(--white);
   border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
 }
 
-.masthead__banner-link {
-  display: block;
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  min-height: 140px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Logo — left side, 140px min-height for legibility */
+.masthead__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: var(--space-md) var(--space-xl);
   min-height: 44px;
-  line-height: 0; /* remove gap below image */
+  z-index: 2;
+  position: relative;
 }
 
-.masthead__banner {
+.masthead__logo img {
+  height: 140px;
+  width: auto;
+}
+
+/* Collage — right side, same height as logo row */
+.masthead__collage {
+  flex: 1;
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Images grid inside collage */
+.masthead__collage-images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  gap: 3px;
+  /* Starts white, fades in over 4 seconds */
+  opacity: 0;
+  animation: collageReveal 4s ease-in-out 0.8s forwards;
+}
+
+.masthead__collage-img {
   width: 100%;
-  height: auto;
-  display: block;
-  /* Gentle fade-in on page load */
-  animation: mastheadReveal 2s var(--ease-out) 0.2s both;
+  height: 100%;
+  object-fit: cover;
+  /* Slightly desaturated for dignity, not distraction */
+  filter: saturate(0.7) brightness(1.05);
 }
 
-@keyframes mastheadReveal {
-  0% { opacity: 0; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* Gradient mask — left edge fades collage into white */
+.masthead__collage-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, var(--white) 0%, rgba(255,255,255,0.8) 40%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes collageReveal {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* ----------------------------------------------------------------
@@ -1592,6 +1642,20 @@ strong {
     display: block;
   }
 
+  /* Masthead: hide collage, center logo on tablet */
+  .masthead__collage {
+    display: none;
+  }
+
+  .masthead__inner {
+    justify-content: center;
+    min-height: auto;
+  }
+
+  .masthead__logo img {
+    height: 100px;
+  }
+
   /* Nav row has hamburger on right */
   .site-header__inner {
     justify-content: flex-end;
@@ -1606,6 +1670,14 @@ strong {
   .container {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
+  }
+
+  .masthead__logo img {
+    height: 80px;
+  }
+
+  .masthead__logo {
+    padding: var(--space-sm) var(--space-md);
   }
 
   .hero {
@@ -1673,7 +1745,7 @@ strong {
     transform: none;
   }
 
-  .masthead__banner {
+  .masthead__collage-images {
     opacity: 1;
     animation: none;
   }
