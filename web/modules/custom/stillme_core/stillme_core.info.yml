@@ -9,6 +9,7 @@ dependencies:
   - drupal:views
   - drupal:layout_builder
   - drupal:media
+  - drupal:media_library
   - drupal:taxonomy
   - drupal:link
   - drupal:datetime
