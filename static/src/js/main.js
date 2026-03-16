@@ -10,14 +10,14 @@
      DOM References
      ---------------------------------------- */
   const header = document.querySelector('.site-header');
-  const navToggle = document.querySelector('.mobile-nav-toggle');
+  const navToggle = document.querySelector('.nav-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
-  const mobileNavClose = document.querySelector('.mobile-nav-close');
+  const mobileNavClose = document.querySelector('.mobile-nav__close');
   const mobileOverlay = document.querySelector('.mobile-nav__overlay');
   const body = document.body;
 
   /* ----------------------------------------
-     Mobile Navigation Toggle
+     Mobile Navigation
      ---------------------------------------- */
   function openMobileNav() {
     if (!mobileNav || !navToggle) return;
@@ -25,9 +25,9 @@
     mobileNav.classList.add('open');
     if (mobileOverlay) mobileOverlay.classList.add('open');
     body.classList.add('nav-open');
-    // Focus the close button or first focusable element inside
-    var firstFocusable = mobileNav.querySelector('.mobile-nav-close') || mobileNav.querySelector('a[href]');
-    if (firstFocusable) firstFocusable.focus();
+    // Focus the close button
+    var closeBtn = mobileNav.querySelector('.mobile-nav__close');
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeMobileNav() {
@@ -38,20 +38,13 @@
     body.classList.remove('nav-open');
   }
 
-  function toggleMobileNav() {
-    var isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-    if (isOpen) {
-      closeMobileNav();
-    } else {
-      openMobileNav();
-    }
-  }
-
   if (navToggle) {
-    navToggle.addEventListener('click', toggleMobileNav);
+    navToggle.addEventListener('click', function () {
+      var isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMobileNav() : openMobileNav();
+    });
   }
 
-  // Close button inside mobile nav
   if (mobileNavClose) {
     mobileNavClose.addEventListener('click', function () {
       closeMobileNav();
@@ -59,12 +52,11 @@
     });
   }
 
-  // Close on overlay click
   if (mobileOverlay) {
     mobileOverlay.addEventListener('click', closeMobileNav);
   }
 
-  // Close on ESC key and return focus to toggle button
+  // ESC key closes mobile nav
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
       closeMobileNav();
@@ -72,38 +64,31 @@
     }
   });
 
-  // Trap focus inside mobile nav when open
+  // Focus trap inside mobile nav
   if (mobileNav) {
     mobileNav.addEventListener('keydown', function (e) {
       if (e.key !== 'Tab') return;
-      var focusable = mobileNav.querySelectorAll('a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
+      var focusable = mobileNav.querySelectorAll('a[href], button, input, [tabindex]:not([tabindex="-1"])');
       if (!focusable.length) return;
       var first = focusable[0];
       var last = focusable[focusable.length - 1];
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     });
-  }
 
-  // Close when clicking a mobile nav link
-  if (mobileNav) {
-    var mobileLinks = mobileNav.querySelectorAll('.nav-link');
-    mobileLinks.forEach(function (link) {
+    // Close on link click
+    mobileNav.querySelectorAll('.mobile-nav__link').forEach(function (link) {
       link.addEventListener('click', closeMobileNav);
     });
   }
 
   /* ----------------------------------------
-     Sticky Header — .scrolled class
+     Sticky Header
      ---------------------------------------- */
   var scrollThreshold = 80;
   var headerScrolled = false;
@@ -111,7 +96,6 @@
   function handleHeaderScroll() {
     if (!header) return;
     var scrollY = window.scrollY || window.pageYOffset;
-
     if (scrollY > scrollThreshold && !headerScrolled) {
       header.classList.add('scrolled');
       headerScrolled = true;
@@ -122,51 +106,35 @@
   }
 
   window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-  // Run once on load in case the page is already scrolled
   handleHeaderScroll();
 
   /* ----------------------------------------
-     Scroll Animations — IntersectionObserver
+     Scroll Animations
      ---------------------------------------- */
   function initScrollAnimations() {
-    var animatedElements = document.querySelectorAll('.fade-in-up');
-    if (!animatedElements.length) return;
+    var elements = document.querySelectorAll('.fade-in-up');
+    if (!elements.length) return;
 
-    // Check for reduced motion preference
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      animatedElements.forEach(function (el) {
-        el.classList.add('visible');
-      });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach(function (el) { el.classList.add('visible'); });
       return;
     }
 
     if (!('IntersectionObserver' in window)) {
-      // Fallback: show all elements immediately
-      animatedElements.forEach(function (el) {
-        el.classList.add('visible');
-      });
+      elements.forEach(function (el) { el.classList.add('visible'); });
       return;
     }
 
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-      }
-    );
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    animatedElements.forEach(function (el) {
-      observer.observe(el);
-    });
+    elements.forEach(function (el) { observer.observe(el); });
   }
 
   initScrollAnimations();
@@ -174,84 +142,42 @@
   /* ----------------------------------------
      Smooth Scroll for Anchor Links
      ---------------------------------------- */
-  function getHeaderHeight() {
-    if (!header) return 0;
-    return header.offsetHeight || 80;
-  }
-
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href^="#"]');
     if (!link) return;
-
     var targetId = link.getAttribute('href');
     if (!targetId || targetId === '#') return;
-
-    var targetElement = document.querySelector(targetId);
-    if (!targetElement) return;
-
+    var target = document.querySelector(targetId);
+    if (!target) return;
     e.preventDefault();
-
-    var offset = getHeaderHeight() + 16;
-    var targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-
-    // Update URL without jumping
-    if (history.pushState) {
-      history.pushState(null, null, targetId);
-    }
+    var offset = (header ? header.offsetHeight : 80) + 16;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
   });
 
   /* ----------------------------------------
-     Active Nav Link Highlighting
+     Active Nav Link
      ---------------------------------------- */
-  function setActiveNavLink() {
+  (function () {
     var currentPath = window.location.pathname;
-    // Normalize: remove trailing slash unless it's just "/"
     if (currentPath !== '/' && currentPath.endsWith('/')) {
       currentPath = currentPath.slice(0, -1);
     }
 
-    var navLinks = document.querySelectorAll('.site-nav__link, .mobile-nav__link, .nav-link');
-
-    navLinks.forEach(function (link) {
+    document.querySelectorAll('.site-nav__link, .mobile-nav__link').forEach(function (link) {
       var href = link.getAttribute('href');
       if (!href) return;
-
-      // Build an absolute path from the href for comparison
       var linkPath = href;
-      // Handle relative paths
-      if (!linkPath.startsWith('/') && !linkPath.startsWith('http')) {
-        // Could be a relative path like "pages/about.html"
-        // We'll compare against the end of currentPath
-      }
-
-      // Normalize link path
       if (linkPath !== '/' && linkPath.endsWith('/')) {
         linkPath = linkPath.slice(0, -1);
       }
-
       link.classList.remove('active');
-
-      // Exact match or ends-with match for relative links
-      if (currentPath === linkPath || currentPath.endsWith('/' + linkPath) || currentPath.endsWith(linkPath)) {
-        // Avoid false positives on very short paths
-        if (linkPath.length > 1 || currentPath === linkPath) {
-          link.classList.add('active');
-        }
+      if (currentPath === linkPath) {
+        link.classList.add('active');
       }
-
-      // Special case: highlight "Home" link when on root
-      if ((currentPath === '/' || currentPath === '/index.html') &&
-          (linkPath === '/' || linkPath === 'index.html' || linkPath === './index.html')) {
+      if ((currentPath === '/' || currentPath === '') && (linkPath === '/' || linkPath === '')) {
         link.classList.add('active');
       }
     });
-  }
-
-  setActiveNavLink();
+  })();
 
 })();

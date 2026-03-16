@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: "Still Me Project &mdash; Honoring Identity, Strengthening Connection"
-description: "The Still Me Project honors identity, dignity, and human connection for individuals and families navigating memory loss. Join us in preserving what matters most."
+description: "The Still Me Project honors identity, dignity, and human connection for individuals and families navigating memory loss."
 ---
 
 
@@ -9,36 +9,37 @@ description: "The Still Me Project honors identity, dignity, and human connectio
          HERO SECTION
          ========================================== -->
     <section class="hero">
-      <div class="container hero-inner">
+      <div class="hero__content fade-in-up">
 
         <!-- Logo Mark -->
-        <div class="hero-logo fade-in-up">
-          <img src="/images/smp-logo-mark.png" alt="Still Me Project mark" style="max-width: 180px;">
-        </div>
+        <img src="/images/smp-logo-mark.png" alt="" aria-hidden="true" class="hero__logo">
 
         <!-- Heading -->
-        <h1 class="hero-title fade-in-up">
+        <h1 class="hero__title">
           Every person deserves to be remembered &mdash; and to remember themselves.
         </h1>
 
         <!-- Subtitle -->
-        <p class="hero-subtitle fade-in-up">
+        <p class="hero__subtitle">
           The Still Me Project honors identity, dignity, and human connection
           for individuals and families navigating memory loss.
         </p>
 
-        <!-- Call-to-Action Buttons -->
-        <div class="hero-actions fade-in-up">
+        <!-- CTA Buttons -->
+        <div class="hero__buttons">
           <a href="/our-approach/" class="btn btn-primary">Learn Our Approach</a>
           <a href="/support/" class="btn btn-secondary">Support the Work</a>
         </div>
 
-      </div><!-- /.hero-inner -->
+      </div>
+
+      <!-- Decorative water ripple -->
+      <div class="hero__ripple" aria-hidden="true"><span></span></div>
     </section>
 
 
     <!-- ==========================================
-         INTRO SECTION — Why We Exist
+         INTRO — Why We Exist
          ========================================== -->
     <section class="section" id="intro">
       <div class="container">
@@ -48,7 +49,7 @@ description: "The Still Me Project honors identity, dignity, and human connectio
           <h2>Because identity doesn't disappear &mdash; it needs to be held.</h2>
         </div>
 
-        <div class="intro-content">
+        <div class="content-width">
           <p class="lead">
             Memory loss changes everything &mdash; the rhythms of a household, the ease of
             conversation, the quiet certainties we once took for granted. But it does not erase
@@ -58,24 +59,18 @@ description: "The Still Me Project honors identity, dignity, and human connectio
           <p class="lead">
             The Still Me Project provides thoughtful frameworks, practical tools, and genuine
             human connection so that families and caregivers can continue to honor the whole
-            person &mdash; not just the diagnosis. Because everyone deserves to be seen, known,
-            and cherished at every stage of life.
+            person &mdash; not just the diagnosis.
           </p>
         </div>
 
-        <!-- Decorative Placeholder Image Area -->
-        <div class="intro-image-placeholder" aria-hidden="true">
-          <div class="soft-shape"></div>
-        </div>
-
-      </div><!-- /.container -->
+      </div>
     </section>
 
 
     <!-- ==========================================
-         THREE PILLARS SECTION
+         THREE PILLARS
          ========================================== -->
-    <section class="section section--cream pillars">
+    <section class="section section--cream">
       <div class="container">
 
         <div class="section-header">
@@ -83,12 +78,12 @@ description: "The Still Me Project honors identity, dignity, and human connectio
           <h2>Three Pillars of Presence</h2>
         </div>
 
-        <div class="grid-3">
+        <div class="pillars">
 
-          <!-- Pillar 1: Preserve -->
-          <div class="pillar-card">
-            <div class="pillar-accent"></div>
-            <div class="pillar-icon" aria-hidden="true">&hearts;</div>
+          <!-- Pillar 1 -->
+          <div class="pillar-card fade-in-up">
+            <span class="pillar-card__accent"></span>
+            <span class="pillar-card__icon" aria-hidden="true">&hearts;</span>
             <h3>Preserve</h3>
             <p>
               Honoring the stories, memories, and identity of every individual
@@ -97,10 +92,10 @@ description: "The Still Me Project honors identity, dignity, and human connectio
             <a href="/our-approach/" class="pillar-link" aria-label="Learn more about Preserve">Learn More &rarr;</a>
           </div>
 
-          <!-- Pillar 2: Connect -->
-          <div class="pillar-card">
-            <div class="pillar-accent"></div>
-            <div class="pillar-icon" aria-hidden="true">&bull;</div>
+          <!-- Pillar 2 -->
+          <div class="pillar-card fade-in-up">
+            <span class="pillar-card__accent"></span>
+            <span class="pillar-card__icon" aria-hidden="true">&bull;</span>
             <h3>Connect</h3>
             <p>
               Strengthening the bonds between individuals, families, and care
@@ -109,10 +104,10 @@ description: "The Still Me Project honors identity, dignity, and human connectio
             <a href="/our-approach/" class="pillar-link" aria-label="Learn more about Connect">Learn More &rarr;</a>
           </div>
 
-          <!-- Pillar 3: Sustain -->
-          <div class="pillar-card">
-            <div class="pillar-accent"></div>
-            <div class="pillar-icon" aria-hidden="true">&diams;</div>
+          <!-- Pillar 3 -->
+          <div class="pillar-card fade-in-up">
+            <span class="pillar-card__accent"></span>
+            <span class="pillar-card__icon" aria-hidden="true">&diams;</span>
             <h3>Sustain</h3>
             <p>
               Building lasting frameworks that support dignity and emotional
@@ -121,27 +116,27 @@ description: "The Still Me Project honors identity, dignity, and human connectio
             <a href="/our-approach/" class="pillar-link" aria-label="Learn more about Sustain">Learn More &rarr;</a>
           </div>
 
-        </div><!-- /.grid-3 -->
+        </div>
 
-      </div><!-- /.container -->
+      </div>
     </section>
 
 
     <!-- ==========================================
-         SPLIT CONTENT SECTION — Our Approach
+         SPLIT — Our Approach
          ========================================== -->
-    <section class="section split">
-      <div class="container split-inner">
+    <section class="section">
+      <div class="container split">
 
-        <!-- Image Side (Left) -->
-        <div class="split-image">
-          <div class="split-image-placeholder">
-            <img src="/images/smp-logo-mark.png" alt="" aria-hidden="true" class="split-placeholder-logo" style="max-width: 80px; opacity: 0.35;">
+        <!-- Image Side -->
+        <div class="split__image fade-in-up">
+          <div style="background: linear-gradient(135deg, var(--light-cream), rgba(47,143,139,0.08)); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border-radius: 12px;">
+            <img src="/images/smp-logo-mark.png" alt="" aria-hidden="true" style="max-width: 100px; opacity: 0.3;">
           </div>
         </div>
 
-        <!-- Text Side (Right) -->
-        <div class="split-text">
+        <!-- Text Side -->
+        <div class="split__text fade-in-up">
           <span class="section-label">Our Approach</span>
           <h2>A framework rooted in dignity</h2>
           <p>
@@ -153,33 +148,35 @@ description: "The Still Me Project honors identity, dignity, and human connectio
           <a href="/our-approach/" class="text-link">Explore Our Approach &rarr;</a>
         </div>
 
-      </div><!-- /.split-inner -->
-    </section>
-
-
-    <!-- ==========================================
-         REFLECTION / QUOTE SECTION
-         ========================================== -->
-    <section class="section section--cream reflection">
-      <div class="container reflection-inner">
-        <div class="reflection-line" aria-hidden="true"></div>
-        <blockquote class="reflection-quote">
-          <p>
-            They may not remember every moment, but they deserve to be
-            remembered in every moment.
-          </p>
-        </blockquote>
-        <div class="reflection-line" aria-hidden="true"></div>
-        <cite class="reflection-attribution">&mdash; The Still Me Project</cite>
       </div>
     </section>
 
 
     <!-- ==========================================
-         CALL TO ACTION SECTION
+         REFLECTION / QUOTE
          ========================================== -->
-    <section class="section cta-section">
-      <div class="container cta-inner">
+    <section class="section section--cream">
+      <div class="container">
+        <div class="reflection">
+          <div class="reflection__line reflection__line--top" aria-hidden="true"></div>
+          <blockquote class="reflection__quote">
+            <p>
+              They may not remember every moment, but they deserve to be
+              remembered in every moment.
+            </p>
+          </blockquote>
+          <div class="reflection__line reflection__line--bottom" aria-hidden="true"></div>
+          <cite class="reflection__attribution">&mdash; The Still Me Project</cite>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         CALL TO ACTION
+         ========================================== -->
+    <section class="cta-section">
+      <div class="container" style="text-align: center; position: relative; z-index: 1;">
         <h2>Join Us in Preserving What Matters Most</h2>
         <p>
           Your support helps us build tools, programs, and resources that honor identity

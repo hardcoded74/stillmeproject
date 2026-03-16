@@ -1,56 +1,54 @@
-  <!-- ============================================
-       SKIP TO CONTENT (Accessibility)
-       ============================================ -->
+  <!-- Skip to Content -->
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
-
 
   <!-- ============================================
        HEADER
        ============================================ -->
   <header class="site-header" role="banner">
-    <div class="container header-inner">
+    <div class="container">
 
       <!-- Logo -->
       <a href="/" class="site-logo" aria-label="Still Me Project — Home">
-        <img src="/images/smp-logo-full.png" alt="Still Me Project logo" style="max-height: 55px;">
+        <img src="/images/smp-logo-full.png" alt="Still Me Project">
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a></li>
-          <li><a href="/about/" class="nav-link{% if page.url == '/about/' %} active{% endif %}">About</a></li>
-          <li><a href="/our-approach/" class="nav-link{% if page.url == '/our-approach/' %} active{% endif %}">Our Approach</a></li>
-          <li><a href="/stories/" class="nav-link{% if page.url == '/stories/' %} active{% endif %}">Stories</a></li>
-          <li><a href="/support/" class="nav-link{% if page.url == '/support/' %} active{% endif %}">Support the Work</a></li>
-          <li><a href="/contact/" class="nav-link{% if page.url == '/contact/' %} active{% endif %}">Contact</a></li>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li><a href="/" class="site-nav__link{% if page.url == '/' %} active{% endif %}">Home</a></li>
+          <li><a href="/about/" class="site-nav__link{% if page.url == '/about/' %} active{% endif %}">About</a></li>
+          <li><a href="/our-approach/" class="site-nav__link{% if page.url == '/our-approach/' %} active{% endif %}">Our Approach</a></li>
+          <li><a href="/stories/" class="site-nav__link{% if page.url == '/stories/' %} active{% endif %}">Stories</a></li>
+          <li><a href="/support/" class="site-nav__link{% if page.url == '/support/' %} active{% endif %}">Support the Work</a></li>
+          <li><a href="/contact/" class="site-nav__link{% if page.url == '/contact/' %} active{% endif %}">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- Mobile Hamburger Button -->
-      <button class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Mobile Hamburger -->
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
       </button>
 
-    </div><!-- /.header-inner -->
-
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" role="dialog" aria-modal="true">
-      <div class="mobile-nav-inner">
-        <button class="mobile-nav-close" aria-label="Close navigation menu">&times;</button>
-        <nav aria-label="Mobile navigation links">
-          <ul class="mobile-nav-list">
-            <li><a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a></li>
-            <li><a href="/about/" class="nav-link{% if page.url == '/about/' %} active{% endif %}">About</a></li>
-            <li><a href="/our-approach/" class="nav-link{% if page.url == '/our-approach/' %} active{% endif %}">Our Approach</a></li>
-            <li><a href="/stories/" class="nav-link{% if page.url == '/stories/' %} active{% endif %}">Stories</a></li>
-            <li><a href="/support/" class="nav-link{% if page.url == '/support/' %} active{% endif %}">Support the Work</a></li>
-            <li><a href="/contact/" class="nav-link{% if page.url == '/contact/' %} active{% endif %}">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div><!-- /.mobile-nav -->
-
+    </div>
   </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav__overlay" id="mobile-nav-overlay"></div>
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button class="mobile-nav__close" aria-label="Close navigation menu">&times;</button>
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav__list">
+        <li><a href="/" class="mobile-nav__link{% if page.url == '/' %} active{% endif %}">Home</a></li>
+        <li><a href="/about/" class="mobile-nav__link{% if page.url == '/about/' %} active{% endif %}">About</a></li>
+        <li><a href="/our-approach/" class="mobile-nav__link{% if page.url == '/our-approach/' %} active{% endif %}">Our Approach</a></li>
+        <li><a href="/stories/" class="mobile-nav__link{% if page.url == '/stories/' %} active{% endif %}">Stories</a></li>
+        <li><a href="/support/" class="mobile-nav__link{% if page.url == '/support/' %} active{% endif %}">Support the Work</a></li>
+        <li><a href="/contact/" class="mobile-nav__link{% if page.url == '/contact/' %} active{% endif %}">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a href="/support/" class="btn btn-gold">Support the Work</a>
+    </div>
+  </div>
