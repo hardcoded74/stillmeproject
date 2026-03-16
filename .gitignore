@@ -34,3 +34,7 @@ Thumbs.db
 # Drush
 /drush/Commands/contrib/
 web/themes/custom/stillme.zip
+
+# Eleventy
+static/_site/
+static/node_modules/
