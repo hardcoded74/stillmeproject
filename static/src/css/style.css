@@ -157,24 +157,38 @@ ul, ol {
    ACCESSIBILITY
    ---------------------------------------------------------------- */
 
-/* Skip Link */
-.skip-to-content {
-  position: fixed;
-  top: -100%;
-  left: var(--space-md);
-  z-index: var(--z-skip);
-  padding: var(--space-sm) var(--space-lg);
+/* Visually Hidden Skip Link — invisible until keyboard focus */
+.visually-hidden-skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  /* Styles for when focused */
   background: var(--navy);
   color: var(--white);
   font-weight: 600;
   font-size: var(--text-sm);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
   text-decoration: none;
-  transition: top var(--duration-fast);
+  z-index: var(--z-skip);
 }
 
-.skip-to-content:focus {
-  top: 0;
+.visually-hidden-skip:focus {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-md);
+  width: auto;
+  height: auto;
+  padding: var(--space-sm) var(--space-lg);
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border-radius: var(--radius-md);
   outline: 3px dashed var(--teal);
   outline-offset: 2px;
 }
@@ -281,22 +295,18 @@ strong {
 .masthead {
   background-color: var(--white);
   border-bottom: 1px solid var(--border-light);
-  text-align: center;
 }
 
 .masthead__banner-link {
   display: block;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: var(--space-lg) var(--space-xl);
   min-height: 44px;
+  line-height: 0; /* remove gap below image */
 }
 
 .masthead__banner {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  max-height: 160px;
-  margin: 0 auto;
+  display: block;
   /* Gentle fade-in on page load */
   animation: mastheadReveal 2s var(--ease-out) 0.2s both;
 }
@@ -1582,15 +1592,6 @@ strong {
     display: block;
   }
 
-  /* Masthead on tablet */
-  .masthead__banner {
-    max-height: 120px;
-  }
-
-  .masthead__banner-link {
-    padding: var(--space-md) var(--space-lg);
-  }
-
   /* Nav row has hamburger on right */
   .site-header__inner {
     justify-content: flex-end;
@@ -1605,15 +1606,6 @@ strong {
   .container {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
-  }
-
-  /* Masthead mobile */
-  .masthead__banner {
-    max-height: 90px;
-  }
-
-  .masthead__banner-link {
-    padding: var(--space-sm) var(--space-md);
   }
 
   .hero {
