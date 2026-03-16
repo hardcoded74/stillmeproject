@@ -276,85 +276,34 @@ strong {
 
 
 /* ----------------------------------------------------------------
-   MASTHEAD (Logo Row)
+   MASTHEAD (Brand Banner)
    ---------------------------------------------------------------- */
 .masthead {
   background-color: var(--white);
   border-bottom: 1px solid var(--border-light);
+  text-align: center;
 }
 
-.masthead__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: var(--space-lg);
-  padding-bottom: var(--space-lg);
-  gap: var(--space-2xl);
-}
-
-/* Logo — 120px for crystal-clear readability */
-.masthead__logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+.masthead__banner-link {
+  display: block;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-xl);
   min-height: 44px;
-  min-width: 44px;
 }
 
-.masthead__logo img {
-  height: 120px;
-  width: auto;
+.masthead__banner {
+  max-width: 100%;
+  height: auto;
+  max-height: 160px;
+  margin: 0 auto;
+  /* Gentle fade-in on page load */
+  animation: mastheadReveal 2s var(--ease-out) 0.2s both;
 }
 
-/* Collage Panel — fades from white to reveal imagery */
-.masthead__collage {
-  flex: 1;
-  max-width: 480px;
-  height: 120px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-}
-
-.masthead__collage-reveal {
-  width: 100%;
-  height: 100%;
-  /* Placeholder: warm gradient simulating a collage.
-     Replace with a real image via background-image when photos are ready:
-     background-image: url('/images/collage.jpg');
-     background-size: cover;
-     background-position: center;
-     filter: saturate(0.6);
-     mix-blend-mode: multiply;  */
-  background:
-    linear-gradient(135deg,
-      rgba(26, 54, 93, 0.06) 0%,
-      rgba(45, 107, 103, 0.08) 30%,
-      rgba(212, 175, 55, 0.06) 60%,
-      rgba(26, 54, 93, 0.04) 100%
-    ),
-    linear-gradient(180deg, var(--paper-warm), var(--paper));
-  /* The reveal animation: starts covered by white, fades to transparent */
-  animation: collageReveal 3s var(--ease-in-out) 0.5s forwards;
-  opacity: 0;
-}
-
-/* When real images are added, apply this to the img */
-.masthead__collage-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.6);
-  mix-blend-mode: multiply;
-}
-
-@keyframes collageReveal {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+@keyframes mastheadReveal {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ----------------------------------------------------------------
@@ -1633,19 +1582,13 @@ strong {
     display: block;
   }
 
-  /* Masthead stacks on tablet */
-  .masthead__collage {
-    display: none;
+  /* Masthead on tablet */
+  .masthead__banner {
+    max-height: 120px;
   }
 
-  .masthead__logo img {
-    height: 90px;
-  }
-
-  .masthead__inner {
-    justify-content: center;
-    padding-top: var(--space-md);
-    padding-bottom: var(--space-md);
+  .masthead__banner-link {
+    padding: var(--space-md) var(--space-lg);
   }
 
   /* Nav row has hamburger on right */
@@ -1665,8 +1608,12 @@ strong {
   }
 
   /* Masthead mobile */
-  .masthead__logo img {
-    height: 80px;
+  .masthead__banner {
+    max-height: 90px;
+  }
+
+  .masthead__banner-link {
+    padding: var(--space-sm) var(--space-md);
   }
 
   .hero {
@@ -1734,7 +1681,7 @@ strong {
     transform: none;
   }
 
-  .masthead__collage-reveal {
+  .masthead__banner {
     opacity: 1;
     animation: none;
   }
