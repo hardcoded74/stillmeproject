@@ -109,7 +109,9 @@
               we will be in touch soon.
             </p>
 
-            <form class="contact-form" aria-label="Contact form" action="#" method="post">
+            <form class="contact-form" action="#" method="post">
+              <fieldset style="border: none; padding: 0; margin: 0;">
+                <legend class="visually-hidden">Contact form</legend>
 
               <div style="margin-bottom: 1.25rem;">
                 <label for="contact-name" style="display: block; font-weight: 500; margin-bottom: 0.4rem; color: #3a3530;">Name</label>
@@ -120,6 +122,7 @@
                   placeholder="Your full name"
                   autocomplete="name"
                   required
+                  aria-required="true"
                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d4cdc2; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fff;"
                 >
               </div>
@@ -133,6 +136,7 @@
                   placeholder="you@example.com"
                   autocomplete="email"
                   required
+                  aria-required="true"
                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d4cdc2; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fff;"
                 >
               </div>
@@ -156,12 +160,14 @@
                   rows="6"
                   placeholder="Tell us what is on your mind..."
                   required
+                  aria-required="true"
                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d4cdc2; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fff; resize: vertical;"
                 ></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary">Send Message</button>
 
+              </fieldset>
             </form>
           </div><!-- /.split-text -->
 
@@ -173,12 +179,12 @@
 
               <div style="margin-bottom: 1.5rem;">
                 <p style="font-weight: 600; color: #3a3530; margin-bottom: 0.25rem;">Email</p>
-                <a href="mailto:hello@stillmeproject.org" style="color: #c4a265;">hello@stillmeproject.org</a>
+                <a href="mailto:hello@stillmeproject.org" style="color: #7B6420;">hello@stillmeproject.org</a>
               </div>
 
               <div style="margin-bottom: 1.5rem;">
                 <p style="font-weight: 600; color: #3a3530; margin-bottom: 0.25rem;">Phone</p>
-                <a href="tel:+15551234567" style="color: #c4a265;">(555) 123-4567</a>
+                <a href="tel:+15551234567" style="color: #7B6420;">(555) 123-4567</a>
               </div>
 
               <div style="margin-bottom: 1.5rem;">
@@ -192,10 +198,10 @@
 
               <div>
                 <p style="font-weight: 600; color: #3a3530; margin-bottom: 0.5rem;">Follow Us</p>
-                <p style="color: #6b6259;">
-                  <a href="#" style="color: #c4a265; margin-right: 1rem;">Facebook</a>
-                  <a href="#" style="color: #c4a265; margin-right: 1rem;">Instagram</a>
-                  <a href="#" style="color: #c4a265;">LinkedIn</a>
+                <p style="color: #5A5249;">
+                  <a href="#" style="color: #7B6420; margin-right: 1rem;" aria-label="Still Me Project on Facebook">Facebook</a>
+                  <a href="#" style="color: #7B6420; margin-right: 1rem;" aria-label="Still Me Project on Instagram">Instagram</a>
+                  <a href="#" style="color: #7B6420;" aria-label="Still Me Project on LinkedIn">LinkedIn</a>
                 </p>
               </div>
 
@@ -247,7 +253,7 @@
             <p>
               There are many ways to support our mission. You can make a financial gift, volunteer
               your time and expertise, share our work with others, or simply reach out to learn
-              more. Visit our <a href="support.html" style="color: #c4a265;">Support</a> page for details.
+              more. Visit our <a href="support.html" style="color: #7B6420;">Support</a> page for details.
             </p>
           </div>
 
@@ -308,7 +314,7 @@
         </div>
 
         <!-- Column 2: Navigation Links -->
-        <div class="footer-links">
+        <nav class="footer-links" aria-label="Footer navigation">
           <h4>Navigate</h4>
           <ul>
             <li><a href="../index.html">Home</a></li>
@@ -318,7 +324,7 @@
             <li><a href="support.html">Support</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
-        </div>
+        </nav>
 
         <!-- Column 3: Contact -->
         <div class="footer-contact">
@@ -352,6 +358,7 @@
               placeholder="Your email address"
               autocomplete="email"
               required
+              aria-required="true"
             >
             <button type="submit" class="btn btn-gold btn-sm">Subscribe</button>
           </form>

@@ -27,6 +27,7 @@
   --teal-light: rgba(47, 143, 139, 0.12);
   --gold-light: rgba(212, 168, 67, 0.15);
   --gold-bright: #e0b84e;
+  --warm-gold-text: #946B1A;
   --muted-text: #5a7080;
   --link-footer: #8FA7B8;
   --border-light: #D1D9E0;
@@ -109,7 +110,8 @@ img {
 /* ----------------------------------------
    Skip Link (Accessibility)
    ---------------------------------------- */
-.skip-link {
+.skip-link,
+.skip-to-content {
   position: absolute;
   top: -100%;
   left: 1rem;
@@ -123,7 +125,8 @@ img {
   transition: top var(--transition-fast);
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-to-content:focus {
   top: 0;
 }
 
@@ -715,7 +718,7 @@ a:hover {
 .reflection__heart {
   display: block;
   font-size: 1.5rem;
-  color: var(--warm-gold);
+  color: var(--warm-gold-text);
   margin-bottom: 1.5rem;
 }
 
@@ -1003,7 +1006,8 @@ a:hover {
 }
 
 .footer-newsletter__input:focus {
-  outline: none;
+  outline: 2px solid var(--warm-gold);
+  outline-offset: 1px;
   border-color: var(--warm-gold);
 }
 
@@ -1142,7 +1146,8 @@ a:hover {
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
-  outline: none;
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
   border-color: var(--teal);
   box-shadow: 0 0 0 3px var(--teal-light);
 }
@@ -1159,7 +1164,8 @@ a:hover {
 .text-left   { text-align: left; }
 .text-right  { text-align: right; }
 
-.sr-only {
+.sr-only,
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;

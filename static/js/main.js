@@ -10,8 +10,9 @@
      DOM References
      ---------------------------------------- */
   const header = document.querySelector('.site-header');
-  const navToggle = document.querySelector('.nav-toggle');
+  const navToggle = document.querySelector('.mobile-nav-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
+  const mobileNavClose = document.querySelector('.mobile-nav-close');
   const mobileOverlay = document.querySelector('.mobile-nav__overlay');
   const body = document.body;
 
@@ -24,6 +25,9 @@
     mobileNav.classList.add('open');
     if (mobileOverlay) mobileOverlay.classList.add('open');
     body.classList.add('nav-open');
+    // Focus the close button or first focusable element inside
+    var firstFocusable = mobileNav.querySelector('.mobile-nav-close') || mobileNav.querySelector('a[href]');
+    if (firstFocusable) firstFocusable.focus();
   }
 
   function closeMobileNav() {
@@ -47,21 +51,52 @@
     navToggle.addEventListener('click', toggleMobileNav);
   }
 
+  // Close button inside mobile nav
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', function () {
+      closeMobileNav();
+      if (navToggle) navToggle.focus();
+    });
+  }
+
   // Close on overlay click
   if (mobileOverlay) {
     mobileOverlay.addEventListener('click', closeMobileNav);
   }
 
-  // Close on ESC key
+  // Close on ESC key and return focus to toggle button
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
       closeMobileNav();
+      if (navToggle) navToggle.focus();
     }
   });
 
+  // Trap focus inside mobile nav when open
+  if (mobileNav) {
+    mobileNav.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var focusable = mobileNav.querySelectorAll('a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+  }
+
   // Close when clicking a mobile nav link
   if (mobileNav) {
-    var mobileLinks = mobileNav.querySelectorAll('.mobile-nav__link');
+    var mobileLinks = mobileNav.querySelectorAll('.nav-link');
     mobileLinks.forEach(function (link) {
       link.addEventListener('click', closeMobileNav);
     });
@@ -180,7 +215,7 @@
       currentPath = currentPath.slice(0, -1);
     }
 
-    var navLinks = document.querySelectorAll('.site-nav__link, .mobile-nav__link');
+    var navLinks = document.querySelectorAll('.site-nav__link, .mobile-nav__link, .nav-link');
 
     navLinks.forEach(function (link) {
       var href = link.getAttribute('href');
