@@ -2,29 +2,26 @@
   <a href="#main-content" class="visually-hidden-skip">Skip to main content</a>
 
   <!-- ============================================
-       MASTHEAD — Logo + Connection Collage
+       MASTHEAD
        ============================================ -->
   <div class="masthead" role="banner">
-    <div class="masthead__inner">
 
-      <!-- Logo (left side) -->
+    <!-- Row 1: Logo (centered) -->
+    <div class="masthead__logo-row">
       <a href="/" class="masthead__logo" aria-label="Still Me Project — Home">
         <img src="/images/smp-logo-full.png" alt="Still Me Project">
       </a>
-
-      <!-- Connection Collage (right side, fades in from white) -->
-      <div class="masthead__collage" aria-hidden="true">
-        <div class="masthead__collage-images">
-          <img src="/images/collage-2.jpg" alt="" class="masthead__collage-img">
-          <img src="/images/collage-4.jpg" alt="" class="masthead__collage-img">
-          <img src="/images/collage-1.jpg" alt="" class="masthead__collage-img">
-          <img src="/images/collage-3.jpg" alt="" class="masthead__collage-img">
-        </div>
-        <!-- Gradient mask: fades collage into white on the left edge -->
-        <div class="masthead__collage-mask"></div>
-      </div>
-
     </div>
+
+    <!-- Row 2: Connection Collage Mosaic (fades in from white) -->
+    <div class="masthead__mosaic" aria-hidden="true">
+      <div class="masthead__mosaic-grid">
+        <img src="/images/collage-2.jpg" alt="" class="masthead__mosaic-img">
+        <img src="/images/collage-4.jpg" alt="" class="masthead__mosaic-img">
+        <img src="/images/collage-1.jpg" alt="" class="masthead__mosaic-img">
+      </div>
+    </div>
+
   </div>
 
   <!-- ============================================
@@ -33,7 +30,6 @@
   <header class="site-header">
     <div class="container site-header__inner">
 
-      <!-- Desktop Navigation -->
       <nav class="site-nav" aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li><a href="/" class="site-nav__link{% if page.url == '/' %} active{% endif %}">Home</a></li>
@@ -45,7 +41,6 @@
         </ul>
       </nav>
 
-      <!-- Mobile Hamburger -->
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
@@ -55,7 +50,7 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation Overlay -->
+  <!-- Mobile Navigation -->
   <div class="mobile-nav__overlay" id="mobile-nav-overlay"></div>
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <button class="mobile-nav__close" aria-label="Close navigation menu">&times;</button>
