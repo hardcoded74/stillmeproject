@@ -1,0 +1,89 @@
+{#
+/**
+ * @file
+ * Still Me Project - Split content (two-column image/text) block template.
+ *
+ * Displays a two-column layout with text on one side and an image on the other.
+ * Supports reversing the order via field_split_reverse.
+ *
+ * Expected fields:
+ * - field_split_heading: Section heading.
+ * - field_split_text: Body text.
+ * - field_split_image: Image.
+ * - field_split_reverse: Boolean to reverse column order.
+ * - field_split_cta: Optional CTA link.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+{# Determine if layout should be reversed #}
+{% set is_reversed = content.field_split_reverse['#items'].value|default(false) %}
+
+<section{{ attributes.addClass(classes).addClass('stillme-section stillme-split' ~ (is_reversed ? ' stillme-split--reverse' : '')) }} aria-label="{{ 'Content section'|t }}">
+  <div class="container">
+    <div class="row align-items-center">
+
+      {# Text column #}
+      <div class="col-lg-6 {{ is_reversed ? 'order-lg-2' : 'order-lg-1' }} mb-4 mb-lg-0">
+        <div class="fade-in-up">
+          {{ title_prefix }}
+          {% if content.field_split_heading|render|trim is not empty %}
+            <h2 class="stillme-section__heading mb-4">
+              {{ content.field_split_heading }}
+            </h2>
+          {% elseif label %}
+            <h2 class="stillme-section__heading mb-4">{{ label }}</h2>
+          {% else %}
+            <h2 class="stillme-section__heading mb-4">
+              {{ 'Lorem Ipsum Dolor Sit Amet'|t }}
+            </h2>
+          {% endif %}
+          {{ title_suffix }}
+
+          {% if content.field_split_text|render|trim is not empty %}
+            <div class="mb-4">
+              {{ content.field_split_text }}
+            </div>
+          {% else %}
+            <p class="mb-4">
+              {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec velit neque, auctor sit amet aliquam vel.'|t }}
+            </p>
+          {% endif %}
+
+          {# Optional CTA button #}
+          {% if content.field_split_cta|render|trim is not empty %}
+            <div>
+              {{ content.field_split_cta }}
+            </div>
+          {% else %}
+            <a href="#" class="btn btn-primary">{{ 'Learn More'|t }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Image column #}
+      <div class="col-lg-6 {{ is_reversed ? 'order-lg-1' : 'order-lg-2' }}">
+        <div class="fade-in-up">
+          {% if content.field_split_image|render|trim is not empty %}
+            {{ content.field_split_image }}
+          {% else %}
+            {# Placeholder image #}
+            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="min-height: 400px;">
+              <span class="text-muted">{{ 'Image placeholder'|t }}</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

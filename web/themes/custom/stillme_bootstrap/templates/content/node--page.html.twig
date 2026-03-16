@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * Still Me Project - Basic page node template.
+ *
+ * Displays a basic page with a hero banner, optional intro text,
+ * body content, and an optional CTA block at the bottom.
+ *
+ * Available variables:
+ * - node: The full node entity.
+ * - content: All field render arrays.
+ * - label: The title of the node.
+ * - url: The canonical URL for this node.
+ * - view_mode: The current view mode (full, teaser, etc.).
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {# -- Page hero banner -- #}
+  <section class="stillme-page-hero" aria-label="{{ 'Page header'|t }}">
+    <div class="container">
+      {{ title_prefix }}
+      <h1{{ title_attributes.addClass('stillme-page-hero__title') }}>
+        {% if content.field_hero_heading|render|trim is not empty %}
+          {{ content.field_hero_heading }}
+        {% else %}
+          {{ label }}
+        {% endif %}
+      </h1>
+      {{ title_suffix }}
+    </div>
+  </section>
+
+  {# -- Page content -- #}
+  <div class="container">
+    <div class="content-width py-5">
+
+      {# Intro text (lead paragraph) #}
+      {% if content.field_intro_text|render|trim is not empty %}
+        <div class="lead mb-4">
+          {{ content.field_intro_text }}
+        </div>
+      {% endif %}
+
+      {# Body content #}
+      <div{{ content_attributes.addClass('node__content') }}>
+        {{ content|without('field_hero_heading', 'field_intro_text', 'field_cta_block') }}
+      </div>
+
+      {# Optional CTA block at bottom #}
+      {% if content.field_cta_block|render|trim is not empty %}
+        <div class="stillme-cta mt-5 p-4 text-center rounded">
+          {{ content.field_cta_block }}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+</article>

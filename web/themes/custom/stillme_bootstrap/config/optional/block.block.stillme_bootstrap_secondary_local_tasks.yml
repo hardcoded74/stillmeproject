@@ -1,0 +1,20 @@
+uuid: 'b1000009-0000-0000-0000-000000000009'
+langcode: en
+status: true
+dependencies:
+  theme:
+    - stillme_bootstrap
+id: stillme_bootstrap_secondary_local_tasks
+theme: stillme_bootstrap
+region: content
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {}

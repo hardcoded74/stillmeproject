@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Still Me Project - CTA / Donation banner block template.
+ *
+ * Full-width call-to-action section with heading, text, and buttons.
+ * Supports a teal background variant via field_cta_background.
+ *
+ * Expected fields:
+ * - field_cta_heading: CTA heading.
+ * - field_cta_text: CTA body text.
+ * - field_cta_button_primary: Primary CTA link (gold button).
+ * - field_cta_button_secondary: Secondary CTA link (outline button).
+ * - field_cta_background: Background variant (e.g., "teal" for teal).
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+{# Determine background class based on field value #}
+{% set bg_variant = content.field_cta_background['#items'].value|default('') %}
+{% set cta_class = bg_variant == 'teal' ? 'stillme-cta--teal' : 'stillme-cta' %}
+
+<section{{ attributes.addClass(classes).addClass(cta_class) }} aria-label="{{ 'Call to action'|t }}">
+  <div class="container text-center py-5">
+    <div class="fade-in-up">
+
+      {# Heading #}
+      {{ title_prefix }}
+      {% if content.field_cta_heading|render|trim is not empty %}
+        <h2 class="text-white mb-3">
+          {{ content.field_cta_heading }}
+        </h2>
+      {% elseif label %}
+        <h2 class="text-white mb-3">{{ label }}</h2>
+      {% else %}
+        <h2 class="text-white mb-3">{{ 'Make a Difference Today'|t }}</h2>
+      {% endif %}
+      {{ title_suffix }}
+
+      {# Body text #}
+      {% if content.field_cta_text|render|trim is not empty %}
+        <p class="text-white lead mb-4 mx-auto" style="max-width: 680px;">
+          {{ content.field_cta_text }}
+        </p>
+      {% else %}
+        <p class="text-white lead mb-4 mx-auto" style="max-width: 680px;">
+          {{ 'Your support helps us empower individuals and families affected by incarceration. Every contribution makes a lasting impact.'|t }}
+        </p>
+      {% endif %}
+
+      {# CTA buttons #}
+      <div>
+        {% if content.field_cta_button_primary|render|trim is not empty %}
+          <span class="me-2 d-inline-block mb-2">
+            {{ content.field_cta_button_primary }}
+          </span>
+        {% else %}
+          <a href="/donate" class="btn btn-warning btn-lg me-2 mb-2">{{ 'Donate Now'|t }}</a>
+        {% endif %}
+
+        {% if content.field_cta_button_secondary|render|trim is not empty %}
+          <span class="d-inline-block mb-2">
+            {{ content.field_cta_button_secondary }}
+          </span>
+        {% else %}
+          <a href="/volunteer" class="btn btn-outline-light btn-lg mb-2">{{ 'Volunteer'|t }}</a>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>

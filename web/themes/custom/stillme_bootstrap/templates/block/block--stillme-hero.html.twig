@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * Still Me Project - Homepage hero block template.
+ *
+ * Full-width hero section with heading, subheading, and two CTA buttons.
+ * Uses .stillme-hero class for background styling.
+ *
+ * Expected fields:
+ * - field_hero_heading: Main hero headline.
+ * - field_hero_subheading: Supporting text below headline.
+ * - field_hero_cta_primary: Primary CTA link.
+ * - field_hero_cta_secondary: Secondary CTA link.
+ * - field_hero_background: Optional background image.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<section{{ attributes.addClass(classes).addClass('stillme-hero') }} aria-label="{{ 'Hero banner'|t }}">
+  <div class="container text-center">
+
+    {# Hero heading with fade-in animation #}
+    <div class="fade-in-up">
+      {{ title_prefix }}
+      {% if content.field_hero_heading|render|trim is not empty %}
+        <h1 class="display-3 fw-bold text-white mb-4">
+          {{ content.field_hero_heading }}
+        </h1>
+      {% else %}
+        <h1 class="display-3 fw-bold text-white mb-4">
+          {{ 'Lorem Ipsum Headline'|t }}
+        </h1>
+      {% endif %}
+      {{ title_suffix }}
+    </div>
+
+    {# Subheading #}
+    {% if content.field_hero_subheading|render|trim is not empty %}
+      <p class="lead text-white mb-5 mx-auto" style="max-width: 720px;">
+        {{ content.field_hero_subheading }}
+      </p>
+    {% else %}
+      <p class="lead text-white mb-5 mx-auto" style="max-width: 720px;">
+        {{ 'Dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.'|t }}
+      </p>
+    {% endif %}
+
+    {# CTA buttons with fade-in animation #}
+    <div class="fade-in-up">
+      {% if content.field_hero_cta_primary|render|trim is not empty %}
+        <span class="me-2 d-inline-block mb-2">
+          {{ content.field_hero_cta_primary }}
+        </span>
+      {% else %}
+        <a href="/donate" class="btn btn-primary btn-lg me-2 mb-2">{{ 'Get Involved'|t }}</a>
+      {% endif %}
+
+      {% if content.field_hero_cta_secondary|render|trim is not empty %}
+        <span class="d-inline-block mb-2">
+          {{ content.field_hero_cta_secondary }}
+        </span>
+      {% else %}
+        <a href="/about" class="btn btn-outline-light btn-lg mb-2">{{ 'Learn More'|t }}</a>
+      {% endif %}
+    </div>
+
+  </div>
+</section>

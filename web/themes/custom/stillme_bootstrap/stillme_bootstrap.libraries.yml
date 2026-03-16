@@ -1,0 +1,16 @@
+google-fonts:
+  version: VERSION
+  css:
+    base:
+      '//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap': { type: external, minified: true }
+
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/colors.css: { weight: 98 }
+      css/style.css: { weight: 100 }
+  js:
+    js/stillme.js: {}
+  dependencies:
+    - core/drupal

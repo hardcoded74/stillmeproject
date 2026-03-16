@@ -1,0 +1,756 @@
+/**
+ * @file
+ * Still Me Project — Main stylesheet.
+ *
+ * Loaded after Bootstrap 5 so every rule here overrides or extends
+ * the base framework.  We keep Bootstrap's grid, utilities, and
+ * component JS intact and simply layer the Still Me brand on top.
+ *
+ * Table of contents
+ * ─────────────────
+ *  0. Google Fonts
+ *  1. Bootstrap variable overrides
+ *  2. Global typography
+ *  3. Links & buttons
+ *  4. Navbar
+ *  5. Cards
+ *  6. Forms
+ *  7. Hero sections
+ *  8. Section primitives
+ *  9. Pillars (icon cards)
+ * 10. Split layout
+ * 11. Call-to-action banner
+ * 12. Blockquote / pull-quote
+ * 13. Story cards
+ * 14. Page hero
+ * 15. Content width
+ * 16. Footer
+ * 17. Accessibility helpers
+ * 18. Animations
+ */
+
+
+/* =================================================================
+ *  0. GOOGLE FONTS
+ * ================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+
+/* =================================================================
+ *  1. BOOTSTRAP VARIABLE OVERRIDES
+ * ================================================================= */
+
+:root {
+  /* Palette — mirrors colors.css but scoped for Bootstrap */
+  --bs-primary:       #1F4E79;
+  --bs-secondary:     #2F8F8B;
+  --bs-warning:       #F4C542;
+
+  /* Body */
+  --bs-body-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --bs-body-color:       #243746;
+  --bs-body-bg:          #F8F9FA;
+
+  /* Links */
+  --bs-link-color:       #2F8F8B;
+  --bs-link-hover-color: #1F4E79;
+}
+
+
+/* =================================================================
+ *  2. GLOBAL TYPOGRAPHY
+ * ================================================================= */
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--stillme-dark-text, #243746);
+  background-color: var(--stillme-soft-bg, #F8F9FA);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  color: var(--stillme-deep-blue, #1F4E79);
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+
+/* =================================================================
+ *  3. LINKS & BUTTONS
+ * ================================================================= */
+
+a {
+  color: var(--stillme-teal, #2F8F8B);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--stillme-deep-blue, #1F4E79);
+}
+
+/* Primary */
+.btn-primary {
+  --bs-btn-bg:           #1F4E79;
+  --bs-btn-border-color: #1F4E79;
+  --bs-btn-hover-bg:     #163A5C;
+  --bs-btn-hover-border-color: #163A5C;
+  --bs-btn-active-bg:    #163A5C;
+  --bs-btn-active-border-color: #12304D;
+}
+
+/* Secondary */
+.btn-secondary {
+  --bs-btn-bg:           #2F8F8B;
+  --bs-btn-border-color: #2F8F8B;
+  --bs-btn-hover-bg:     #236D6A;
+  --bs-btn-hover-border-color: #236D6A;
+  --bs-btn-active-bg:    #236D6A;
+  --bs-btn-active-border-color: #1D5B58;
+}
+
+/* Warning / Gold */
+.btn-warning {
+  --bs-btn-bg:           #F4C542;
+  --bs-btn-border-color: #F4C542;
+  --bs-btn-color:        #243746;
+  --bs-btn-hover-bg:     #D4A720;
+  --bs-btn-hover-border-color: #D4A720;
+  --bs-btn-active-bg:    #D4A720;
+}
+
+/* Gold helper */
+.btn-gold {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--stillme-dark-text, #243746);
+  background-color: var(--stillme-gold, #F4C542);
+  border: 2px solid var(--stillme-gold, #F4C542);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-gold:hover,
+.btn-gold:focus {
+  background-color: var(--stillme-gold-dark, #D4A720);
+  border-color: var(--stillme-gold-dark, #D4A720);
+  color: var(--stillme-dark-text, #243746);
+  transform: translateY(-1px);
+}
+
+/* Shared button polish */
+.btn {
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+
+/* =================================================================
+ *  4. NAVBAR
+ * ================================================================= */
+
+.navbar {
+  background-color: var(--stillme-deep-blue, #1F4E79) !important;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar.sticky-top {
+  z-index: 1030;
+}
+
+/* Shadow on scroll — toggled by JS */
+.navbar.scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .navbar-brand {
+  color: var(--stillme-white, #FFFFFF);
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.navbar .navbar-brand:hover {
+  color: var(--stillme-gold, #F4C542);
+}
+
+.navbar .navbar-brand img {
+  max-height: 50px;
+  width: auto;
+}
+
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  color: var(--stillme-white, #FFFFFF) !important;
+}
+
+.navbar .nav-link.active {
+  border-bottom: 2px solid var(--stillme-gold, #F4C542);
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+
+/* =================================================================
+ *  5. CARDS
+ * ================================================================= */
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =================================================================
+ *  6. FORMS
+ * ================================================================= */
+
+.form-control {
+  border-radius: 6px;
+  border: 1px solid var(--stillme-light-gray, #E9EEF2);
+  padding: 0.625rem 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--stillme-teal, #2F8F8B);
+  box-shadow: 0 0 0 3px rgba(47, 143, 139, 0.2);
+}
+
+.form-select:focus {
+  border-color: var(--stillme-teal, #2F8F8B);
+  box-shadow: 0 0 0 3px rgba(47, 143, 139, 0.2);
+}
+
+label,
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.375rem;
+  color: var(--stillme-dark-text, #243746);
+}
+
+
+/* =================================================================
+ *  7. HERO SECTIONS
+ * ================================================================= */
+
+.stillme-hero {
+  padding: 5rem 0;
+  background-color: var(--stillme-soft-bg, #F8F9FA);
+  text-align: center;
+}
+
+.stillme-hero h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--stillme-deep-blue, #1F4E79);
+}
+
+.stillme-hero p {
+  font-size: 1.2rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  color: var(--stillme-dark-text, #243746);
+}
+
+.stillme-hero .btn {
+  margin-top: 0.5rem;
+}
+
+/* Dark variant */
+.stillme-hero--dark {
+  background-color: var(--stillme-deep-blue, #1F4E79);
+  color: var(--stillme-white, #FFFFFF);
+}
+
+.stillme-hero--dark h1,
+.stillme-hero--dark p {
+  color: var(--stillme-white, #FFFFFF);
+}
+
+.stillme-hero--dark p {
+  opacity: 0.9;
+}
+
+
+/* =================================================================
+ *  8. SECTION PRIMITIVES
+ * ================================================================= */
+
+.stillme-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--stillme-light-gray, #E9EEF2);
+}
+
+.stillme-section:first-child {
+  border-top: none;
+}
+
+.stillme-section__heading {
+  font-family: 'Lora', Georgia, serif;
+  color: var(--stillme-deep-blue, #1F4E79);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+
+/* =================================================================
+ *  9. PILLARS (Icon cards)
+ * ================================================================= */
+
+.stillme-pillars .card {
+  height: 100%;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.stillme-pillars .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stillme-pillar-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--stillme-teal, #2F8F8B);
+  color: var(--stillme-white, #FFFFFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+/* =================================================================
+ * 10. SPLIT LAYOUT
+ * ================================================================= */
+
+.stillme-split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stillme-split--reverse {
+  flex-direction: row-reverse;
+}
+
+.stillme-split .col-md-6 img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}
+
+
+/* =================================================================
+ * 11. CALL-TO-ACTION BANNER
+ * ================================================================= */
+
+.stillme-cta {
+  background-color: var(--stillme-deep-blue, #1F4E79);
+  color: var(--stillme-white, #FFFFFF);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.stillme-cta h2,
+.stillme-cta p {
+  color: var(--stillme-white, #FFFFFF);
+}
+
+.stillme-cta p {
+  opacity: 0.9;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.stillme-cta .btn {
+  min-width: 180px;
+}
+
+/* Teal variant */
+.stillme-cta--teal {
+  background-color: var(--stillme-teal, #2F8F8B);
+}
+
+
+/* =================================================================
+ * 12. BLOCKQUOTE / PULL-QUOTE
+ * ================================================================= */
+
+blockquote,
+.stillme-quote blockquote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  border-left: 4px solid var(--stillme-gold, #F4C542);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--stillme-dark-text, #243746);
+}
+
+.stillme-quote {
+  background-color: var(--stillme-light-gray, #E9EEF2);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.stillme-quote blockquote {
+  border-left: none;
+  padding-left: 0;
+  font-size: 1.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stillme-quote .stillme-quote__attribution,
+.stillme-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--stillme-teal, #2F8F8B);
+  font-weight: 500;
+}
+
+
+/* =================================================================
+ * 13. STORY CARDS
+ * ================================================================= */
+
+.stillme-story-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: var(--stillme-white, #FFFFFF);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stillme-story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stillme-story-card__image {
+  position: relative;
+  padding-top: 56.25%; /* 16 : 9 */
+  overflow: hidden;
+}
+
+.stillme-story-card__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stillme-story-card__body {
+  padding: 1.5rem;
+}
+
+.stillme-story-card__date {
+  font-size: 0.8rem;
+  color: #7A8B97;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stillme-story-card__title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--stillme-deep-blue, #1F4E79);
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.stillme-story-card__excerpt {
+  font-size: 0.95rem;
+  color: var(--stillme-dark-text, #243746);
+  margin-bottom: 1rem;
+}
+
+.stillme-story-card__link {
+  font-weight: 600;
+  color: var(--stillme-teal, #2F8F8B);
+  text-decoration: none;
+}
+
+.stillme-story-card__link:hover {
+  color: var(--stillme-deep-blue, #1F4E79);
+  text-decoration: underline;
+}
+
+/* Featured story — larger, horizontal at md+ */
+.stillme-featured-story {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  background: var(--stillme-white, #FFFFFF);
+  transition: box-shadow 0.25s ease;
+}
+
+.stillme-featured-story:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 768px) {
+  .stillme-featured-story {
+    flex-direction: row;
+  }
+
+  .stillme-featured-story .stillme-story-card__image {
+    flex: 0 0 50%;
+    padding-top: 0;
+    min-height: 320px;
+  }
+
+  .stillme-featured-story .stillme-story-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+  }
+}
+
+.stillme-featured-story .stillme-story-card__title {
+  font-size: 1.5rem;
+}
+
+
+/* =================================================================
+ * 14. PAGE HERO
+ * ================================================================= */
+
+.stillme-page-hero {
+  background-color: var(--stillme-deep-blue, #1F4E79);
+  color: var(--stillme-white, #FFFFFF);
+  padding: 3rem 0;
+}
+
+.stillme-page-hero h1 {
+  font-family: 'Lora', Georgia, serif;
+  color: var(--stillme-white, #FFFFFF);
+  margin-bottom: 0.5rem;
+}
+
+.stillme-page-hero p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0;
+}
+
+
+/* =================================================================
+ * 15. CONTENT WIDTH
+ * ================================================================= */
+
+.content-width {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =================================================================
+ * 16. FOOTER
+ * ================================================================= */
+
+.site-footer {
+  background-color: var(--stillme-footer-bg, #163A5C);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 3.5rem 0 0;
+  font-size: 0.95rem;
+}
+
+.site-footer__heading {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  color: var(--stillme-gold, #F4C542);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: var(--stillme-footer-link, #BCC6D0);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--stillme-white, #FFFFFF);
+  text-decoration: none;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2.5rem;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+
+/* =================================================================
+ * 17. ACCESSIBILITY HELPERS
+ * ================================================================= */
+
+/* Visible focus outlines */
+:focus-visible {
+  outline: 3px solid var(--stillme-gold, #F4C542);
+  outline-offset: 2px;
+}
+
+/* Skip-to-content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--stillme-gold, #F4C542);
+  color: var(--stillme-dark-text, #243746);
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 6px 6px;
+  font-weight: 600;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+
+/* =================================================================
+ * 18. ANIMATIONS
+ * ================================================================= */
+
+/* Fade in + slide up */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card,
+  .stillme-story-card,
+  .btn-gold {
+    transition: none;
+  }
+}
+
+
+/* =================================================================
+ *  BOOTSTRAP CONTAINER OVERRIDE
+ * ================================================================= */
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-xl {
+    max-width: 1200px;
+  }
+}

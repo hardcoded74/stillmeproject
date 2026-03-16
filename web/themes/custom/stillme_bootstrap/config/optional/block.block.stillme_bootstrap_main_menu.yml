@@ -1,0 +1,23 @@
+uuid: 'b1000002-0000-0000-0000-000000000002'
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stillme_bootstrap
+id: stillme_bootstrap_main_menu
+theme: stillme_bootstrap
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {}

@@ -1,0 +1,29 @@
+/**
+ * @file
+ * Still Me Project — Design Tokens (CSS Custom Properties)
+ *
+ * Single source of truth for the brand palette.
+ * Consumed by style.css and available to any component.
+ */
+
+:root {
+  /* ── Primary palette ─────────────────────────────────────── */
+  --stillme-deep-blue:       #1F4E79;
+  --stillme-deep-blue-dark:  #163A5C;
+  --stillme-teal:            #2F8F8B;
+  --stillme-teal-dark:       #236D6A;
+  --stillme-teal-light:      #3AAFAB;
+  --stillme-gold:            #F4C542;
+  --stillme-gold-light:      #F7D56E;
+  --stillme-gold-dark:       #D4A720;
+
+  /* ── Neutrals ────────────────────────────────────────────── */
+  --stillme-soft-bg:         #F8F9FA;
+  --stillme-light-gray:      #E9EEF2;
+  --stillme-dark-text:       #243746;
+  --stillme-white:           #FFFFFF;
+
+  /* ── Footer ──────────────────────────────────────────────── */
+  --stillme-footer-bg:       #163A5C;
+  --stillme-footer-link:     #BCC6D0;
+}

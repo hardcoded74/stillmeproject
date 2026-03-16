@@ -1,0 +1,3 @@
+stillme_bootstrap.settings:
+  type: bootstrap.settings
+  label: 'Still Me Bootstrap theme settings'

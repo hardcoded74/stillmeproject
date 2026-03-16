@@ -1,0 +1,94 @@
+{#
+/**
+ * @file
+ * Still Me Project - Featured story block template.
+ *
+ * Displays a featured story with image and content side by side.
+ *
+ * Expected fields:
+ * - field_featured_image: Story image.
+ * - field_featured_title: Story title.
+ * - field_featured_excerpt: Story excerpt text.
+ * - field_featured_link: Link to the full story.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<section{{ attributes.addClass(classes).addClass('stillme-section') }} aria-label="{{ 'Featured story'|t }}">
+  <div class="container">
+
+    {# Section heading #}
+    {{ title_prefix }}
+    {% if label %}
+      <h2 class="stillme-section__heading text-center mb-5">{{ label }}</h2>
+    {% else %}
+      <h2 class="stillme-section__heading text-center mb-5">{{ 'Featured Story'|t }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+
+    <div class="stillme-featured-story">
+      <div class="row align-items-center">
+
+        {# Image column #}
+        <div class="col-md-5 mb-4 mb-md-0">
+          {% if content.field_featured_image|render|trim is not empty %}
+            <div class="rounded overflow-hidden">
+              {{ content.field_featured_image }}
+            </div>
+          {% else %}
+            {# Placeholder image #}
+            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="min-height: 320px;">
+              <span class="text-muted">{{ 'Featured story image'|t }}</span>
+            </div>
+          {% endif %}
+        </div>
+
+        {# Content column #}
+        <div class="col-md-7">
+          <div class="ps-md-4">
+
+            {# Story title #}
+            {% if content.field_featured_title|render|trim is not empty %}
+              <h3 class="mb-3">{{ content.field_featured_title }}</h3>
+            {% else %}
+              <h3 class="mb-3">{{ 'A Journey of Transformation and Hope'|t }}</h3>
+            {% endif %}
+
+            {# Excerpt #}
+            {% if content.field_featured_excerpt|render|trim is not empty %}
+              <div class="text-muted mb-4">
+                {{ content.field_featured_excerpt }}
+              </div>
+            {% else %}
+              <p class="text-muted mb-4">
+                {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.'|t }}
+              </p>
+            {% endif %}
+
+            {# CTA link #}
+            {% if content.field_featured_link|render|trim is not empty %}
+              {{ content.field_featured_link }}
+            {% else %}
+              <a href="/stories" class="btn btn-primary">
+                {{ 'Read Full Story'|t }}
+                <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+              </a>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

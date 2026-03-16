@@ -1,0 +1,262 @@
+{#
+/**
+ * @file
+ * Still Me Project - Main page template.
+ *
+ * Extends the Bootstrap 5 base theme page template and overrides
+ * the head, content, and footer blocks for the Still Me design.
+ *
+ * Available variables:
+ * - page: The full page render array with all regions.
+ * - is_front: Whether this is the front page.
+ *
+ * @see template_preprocess_page()
+ */
+#}
+{% extends "@bootstrap/layout/page.html.twig" %}
+
+{# ==================== HEAD / NAVBAR ==================== #}
+{% block head %}
+
+  {# -- Top utility bar (secondary menu, top header) -- #}
+  {% if page.secondary_menu or page.top_header or page.top_header_form %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1" aria-label="{{ 'Utility navigation'|t }}">
+      <div class="container">
+        {% if page.top_header %}
+          <div class="me-auto">
+            {{ page.top_header }}
+          </div>
+        {% endif %}
+        {% if page.secondary_menu %}
+          <div class="ms-auto">
+            {{ page.secondary_menu }}
+          </div>
+        {% endif %}
+        {% if page.top_header_form %}
+          <div class="ms-2">
+            {{ page.top_header_form }}
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+
+  {# -- Main navigation bar -- #}
+  <nav class="navbar navbar-expand-lg bg-dark sticky-top" aria-label="{{ 'Main navigation'|t }}">
+    <div class="container">
+
+      {# Site branding / logo #}
+      {% if page.header %}
+        <div class="navbar-brand">
+          {{ page.header }}
+        </div>
+      {% endif %}
+
+      {# Mobile toggler button #}
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#stillme-main-nav"
+              aria-controls="stillme-main-nav"
+              aria-expanded="false"
+              aria-label="{{ 'Toggle navigation'|t }}">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      {# Collapsible navigation #}
+      <div class="collapse navbar-collapse" id="stillme-main-nav">
+        {% if page.primary_menu %}
+          {{ page.primary_menu }}
+        {% endif %}
+        {% if page.header_form %}
+          <div class="ms-auto">
+            {{ page.header_form }}
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </nav>
+
+  {# -- Highlighted region -- #}
+  {% if page.highlighted %}
+    <div class="highlighted">
+      <div class="container">
+        {{ page.highlighted }}
+      </div>
+    </div>
+  {% endif %}
+
+{% endblock %}
+
+{# ==================== CONTENT ==================== #}
+{% block content %}
+
+  {# Breadcrumb inside container on all pages #}
+  {% if page.breadcrumb %}
+    <div class="container">
+      {{ page.breadcrumb }}
+    </div>
+  {% endif %}
+
+  {# Featured top region #}
+  {% if page.featured_top %}
+    <div class="featured-top">
+      <div class="container">
+        {{ page.featured_top }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if is_front %}
+    {# Front page: full-width content (no container) for hero/layout builder sections #}
+    <main role="main" id="main-content">
+      <a id="main-content-anchor" tabindex="-1"></a>
+      {{ page.content }}
+    </main>
+  {% else %}
+    {# Inner pages: standard Bootstrap layout with optional sidebars #}
+    <main role="main" id="main-content">
+      <a id="main-content-anchor" tabindex="-1"></a>
+      <div class="container">
+        <div class="row">
+
+          {# Sidebar first #}
+          {% if page.sidebar_first %}
+            <div class="col-lg-3 order-lg-1">
+              <aside class="sidebar sidebar-first" role="complementary" aria-label="{{ 'Sidebar first'|t }}">
+                {{ page.sidebar_first }}
+              </aside>
+            </div>
+          {% endif %}
+
+          {# Main content area #}
+          <div class="{{ page.sidebar_first and page.sidebar_second ? 'col-lg-6' : (page.sidebar_first or page.sidebar_second ? 'col-lg-9' : 'col-lg-12') }} order-lg-2">
+            {{ page.content }}
+          </div>
+
+          {# Sidebar second #}
+          {% if page.sidebar_second %}
+            <div class="col-lg-3 order-lg-3">
+              <aside class="sidebar sidebar-second" role="complementary" aria-label="{{ 'Sidebar second'|t }}">
+                {{ page.sidebar_second }}
+              </aside>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </main>
+  {% endif %}
+
+  {# Featured bottom regions #}
+  {% if page.featured_bottom_first or page.featured_bottom_second or page.featured_bottom_third %}
+    <div class="featured-bottom">
+      <div class="container">
+        <div class="row">
+          {% if page.featured_bottom_first %}
+            <div class="col-md-4">
+              {{ page.featured_bottom_first }}
+            </div>
+          {% endif %}
+          {% if page.featured_bottom_second %}
+            <div class="col-md-4">
+              {{ page.featured_bottom_second }}
+            </div>
+          {% endif %}
+          {% if page.featured_bottom_third %}
+            <div class="col-md-4">
+              {{ page.featured_bottom_third }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+{% endblock %}
+
+{# ==================== FOOTER ==================== #}
+{% block footer %}
+
+  <footer class="site-footer" role="contentinfo" aria-label="{{ 'Site footer'|t }}">
+
+    {# -- Main footer columns -- #}
+    <div class="container py-5">
+      <div class="row">
+
+        {# Column 1: Logo & description #}
+        <div class="col-lg-3 mb-4 mb-lg-0">
+          {% if page.footer_fourth %}
+            {{ page.footer_fourth }}
+          {% else %}
+            <h5 class="site-footer__heading">{{ 'Still Me Project'|t }}</h5>
+            <p class="small text-light opacity-75">
+              {{ 'Empowering individuals affected by incarceration to rebuild their identity, strengthen family bonds, and reintegrate into society with dignity.'|t }}
+            </p>
+          {% endif %}
+        </div>
+
+        {# Column 2: Quick Links #}
+        <div class="col-lg-3 mb-4 mb-lg-0">
+          {% if page.footer_first %}
+            {{ page.footer_first }}
+          {% else %}
+            <h5 class="site-footer__heading">{{ 'Quick Links'|t }}</h5>
+            <ul class="list-unstyled">
+              <li><a href="/" class="text-light text-decoration-none">{{ 'Home'|t }}</a></li>
+              <li><a href="/about" class="text-light text-decoration-none">{{ 'About Us'|t }}</a></li>
+              <li><a href="/programs" class="text-light text-decoration-none">{{ 'Programs'|t }}</a></li>
+              <li><a href="/stories" class="text-light text-decoration-none">{{ 'Stories'|t }}</a></li>
+              <li><a href="/contact" class="text-light text-decoration-none">{{ 'Contact'|t }}</a></li>
+            </ul>
+          {% endif %}
+        </div>
+
+        {# Column 3: Contact info #}
+        <div class="col-lg-3 mb-4 mb-lg-0">
+          {% if page.footer_second %}
+            {{ page.footer_second }}
+          {% else %}
+            <h5 class="site-footer__heading">{{ 'Contact Us'|t }}</h5>
+            <ul class="list-unstyled small text-light opacity-75">
+              <li>{{ 'Email: info@stillmeproject.org'|t }}</li>
+              <li>{{ 'Phone: (555) 123-4567'|t }}</li>
+              <li>{{ 'Address: 123 Hope Street'|t }}</li>
+            </ul>
+          {% endif %}
+        </div>
+
+        {# Column 4: Stay Connected / Newsletter #}
+        <div class="col-lg-3">
+          {% if page.footer_third %}
+            {{ page.footer_third }}
+          {% else %}
+            <h5 class="site-footer__heading">{{ 'Stay Connected'|t }}</h5>
+            <p class="small text-light opacity-75">
+              {{ 'Subscribe to our newsletter for updates on programs, stories of transformation, and ways to get involved.'|t }}
+            </p>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+    {# -- Footer bottom bar -- #}
+    <div class="site-footer__bottom">
+      <div class="container py-3">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="mb-0 small">&copy; {{ 'now'|date('Y') }} {{ 'Still Me Project. All rights reserved.'|t }}</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            {% if page.footer_fifth %}
+              {{ page.footer_fifth }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+{% endblock %}

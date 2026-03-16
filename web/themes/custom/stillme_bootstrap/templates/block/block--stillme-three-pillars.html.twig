@@ -1,0 +1,102 @@
+{#
+/**
+ * @file
+ * Still Me Project - Three pillars (three cards) block template.
+ *
+ * Displays three pillar cards in a row, each with an icon circle,
+ * title, description, and optional link.
+ *
+ * Expected fields:
+ * - field_pillars_heading: Section heading.
+ * - field_pillar_items: Multi-value field or paragraphs with:
+ *   - field_pillar_icon: Icon class or image.
+ *   - field_pillar_title: Pillar title.
+ *   - field_pillar_text: Pillar description.
+ *   - field_pillar_link: Optional link.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<section{{ attributes.addClass(classes).addClass('stillme-section stillme-pillars') }} aria-label="{{ 'Our pillars'|t }}">
+  <div class="container">
+
+    {# Section heading #}
+    <div class="text-center mb-5">
+      {{ title_prefix }}
+      {% if content.field_pillars_heading|render|trim is not empty %}
+        <h2 class="stillme-section__heading">
+          {{ content.field_pillars_heading }}
+        </h2>
+      {% elseif label %}
+        <h2 class="stillme-section__heading">{{ label }}</h2>
+      {% else %}
+        <h2 class="stillme-section__heading">{{ 'Our Three Pillars'|t }}</h2>
+      {% endif %}
+      {{ title_suffix }}
+    </div>
+
+    {# Pillar cards #}
+    {% if content.field_pillar_items|render|trim is not empty %}
+      <div class="row">
+        {{ content.field_pillar_items }}
+      </div>
+    {% else %}
+      {# Placeholder cards #}
+      <div class="row">
+
+        {# Pillar 1 #}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center p-4 border-0 shadow-sm fade-in-up">
+            <div class="stillme-pillar-icon mx-auto mb-3" aria-hidden="true">
+              <i class="bi bi-people-fill"></i>
+            </div>
+            <h3 class="h5 mb-3">{{ 'Identity & Self-Worth'|t }}</h3>
+            <p class="text-muted">
+              {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'|t }}
+            </p>
+            <a href="#" class="btn btn-outline-primary btn-sm mt-auto align-self-center">{{ 'Learn More'|t }}</a>
+          </div>
+        </div>
+
+        {# Pillar 2 #}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center p-4 border-0 shadow-sm fade-in-up">
+            <div class="stillme-pillar-icon mx-auto mb-3" aria-hidden="true">
+              <i class="bi bi-heart-fill"></i>
+            </div>
+            <h3 class="h5 mb-3">{{ 'Family Reconnection'|t }}</h3>
+            <p class="text-muted">
+              {{ 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.'|t }}
+            </p>
+            <a href="#" class="btn btn-outline-primary btn-sm mt-auto align-self-center">{{ 'Learn More'|t }}</a>
+          </div>
+        </div>
+
+        {# Pillar 3 #}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center p-4 border-0 shadow-sm fade-in-up">
+            <div class="stillme-pillar-icon mx-auto mb-3" aria-hidden="true">
+              <i class="bi bi-house-heart-fill"></i>
+            </div>
+            <h3 class="h5 mb-3">{{ 'Community Reintegration'|t }}</h3>
+            <p class="text-muted">
+              {{ 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'|t }}
+            </p>
+            <a href="#" class="btn btn-outline-primary btn-sm mt-auto align-self-center">{{ 'Learn More'|t }}</a>
+          </div>
+        </div>
+
+      </div>
+    {% endif %}
+
+  </div>
+</section>

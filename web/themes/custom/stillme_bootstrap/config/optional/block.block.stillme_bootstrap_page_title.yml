@@ -1,0 +1,18 @@
+uuid: 'b1000004-0000-0000-0000-000000000004'
+langcode: en
+status: true
+dependencies:
+  theme:
+    - stillme_bootstrap
+id: stillme_bootstrap_page_title
+theme: stillme_bootstrap
+region: content
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {}

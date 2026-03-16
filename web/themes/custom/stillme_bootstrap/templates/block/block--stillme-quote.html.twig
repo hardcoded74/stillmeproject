@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Still Me Project - Quote strip block template.
+ *
+ * Displays a centered blockquote with attribution.
+ *
+ * Expected fields:
+ * - field_quote_text: The quote text.
+ * - field_quote_attribution: The person being quoted.
+ * - field_quote_role: Optional role/title of the person.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<section{{ attributes.addClass(classes).addClass('stillme-quote') }} aria-label="{{ 'Quote'|t }}">
+  <div class="container text-center py-5">
+
+    <blockquote class="blockquote">
+
+      {# Quote text #}
+      {% if content.field_quote_text|render|trim is not empty %}
+        <p class="display-6 fst-italic mb-4" style="font-family: 'Lora', serif;">
+          {{ content.field_quote_text }}
+        </p>
+      {% else %}
+        <p class="display-6 fst-italic mb-4" style="font-family: 'Lora', serif;">
+          &ldquo;{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'|t }}&rdquo;
+        </p>
+      {% endif %}
+
+      {# Attribution #}
+      <footer class="blockquote-footer mt-3">
+        {% if content.field_quote_attribution|render|trim is not empty %}
+          <cite title="{{ 'Quote attribution'|t }}">
+            {{ content.field_quote_attribution }}
+          </cite>
+          {% if content.field_quote_role|render|trim is not empty %}
+            <span class="d-block small text-muted mt-1">
+              {{ content.field_quote_role }}
+            </span>
+          {% endif %}
+        {% else %}
+          <cite title="{{ 'Quote attribution'|t }}">
+            {{ 'Program Participant'|t }}
+          </cite>
+        {% endif %}
+      </footer>
+
+    </blockquote>
+
+  </div>
+</section>
