@@ -1,7 +1,7 @@
 name: 'Still Me Core'
 type: module
 description: 'Core content types, block types, views, and configuration for the Still Me Project website.'
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 package: 'Still Me Project'
 dependencies:
   - drupal:block_content
