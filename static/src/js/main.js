@@ -90,7 +90,7 @@
   /* ----------------------------------------
      Sticky Header
      ---------------------------------------- */
-  var scrollThreshold = 80;
+  var scrollThreshold = 20; /* Lower threshold since masthead scrolls away first */
   var headerScrolled = false;
 
   function handleHeaderScroll() {

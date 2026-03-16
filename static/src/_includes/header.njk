@@ -1,16 +1,33 @@
-  <!-- Skip to Content -->
+  <!-- Skip to Content (visually hidden, appears on keyboard focus) -->
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <!-- ============================================
-       HEADER
+       MASTHEAD — Logo Row
        ============================================ -->
-  <header class="site-header" role="banner">
-    <div class="container">
+  <div class="masthead" role="banner">
+    <div class="container masthead__inner">
 
       <!-- Logo -->
-      <a href="/" class="site-logo" aria-label="Still Me Project — Home">
+      <a href="/" class="masthead__logo" aria-label="Still Me Project — Home">
         <img src="/images/smp-logo-full.png" alt="Still Me Project">
       </a>
+
+      <!-- Collage Panel — fades in from white on load -->
+      <div class="masthead__collage" aria-hidden="true">
+        <div class="masthead__collage-reveal">
+          <!-- Replace with real collage image when available:
+               <img src="/images/collage.jpg" alt="" class="masthead__collage-img"> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       NAVIGATION ROW
+       ============================================ -->
+  <header class="site-header" role="navigation">
+    <div class="container site-header__inner">
 
       <!-- Desktop Navigation -->
       <nav class="site-nav" aria-label="Primary navigation">

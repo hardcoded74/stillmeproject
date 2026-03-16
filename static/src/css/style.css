@@ -276,48 +276,113 @@ strong {
 
 
 /* ----------------------------------------------------------------
-   HEADER
+   MASTHEAD (Logo Row)
+   ---------------------------------------------------------------- */
+.masthead {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  gap: var(--space-2xl);
+}
+
+/* Logo — 120px for crystal-clear readability */
+.masthead__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.masthead__logo img {
+  height: 120px;
+  width: auto;
+}
+
+/* Collage Panel — fades from white to reveal imagery */
+.masthead__collage {
+  flex: 1;
+  max-width: 480px;
+  height: 120px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.masthead__collage-reveal {
+  width: 100%;
+  height: 100%;
+  /* Placeholder: warm gradient simulating a collage.
+     Replace with a real image via background-image when photos are ready:
+     background-image: url('/images/collage.jpg');
+     background-size: cover;
+     background-position: center;
+     filter: saturate(0.6);
+     mix-blend-mode: multiply;  */
+  background:
+    linear-gradient(135deg,
+      rgba(26, 54, 93, 0.06) 0%,
+      rgba(45, 107, 103, 0.08) 30%,
+      rgba(212, 175, 55, 0.06) 60%,
+      rgba(26, 54, 93, 0.04) 100%
+    ),
+    linear-gradient(180deg, var(--paper-warm), var(--paper));
+  /* The reveal animation: starts covered by white, fades to transparent */
+  animation: collageReveal 3s var(--ease-in-out) 0.5s forwards;
+  opacity: 0;
+}
+
+/* When real images are added, apply this to the img */
+.masthead__collage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.6);
+  mix-blend-mode: multiply;
+}
+
+@keyframes collageReveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------------------------
+   NAVIGATION ROW (below masthead)
    ---------------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background-color: rgba(252, 250, 247, 0.92);
+  background-color: rgba(252, 250, 247, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--border-light);
   transition:
     background-color var(--duration-base),
-    border-color var(--duration-base),
     box-shadow var(--duration-base);
 }
 
 .site-header.scrolled {
   background-color: rgba(252, 250, 247, 0.98);
-  border-bottom-color: var(--border-light);
-  box-shadow: 0 1px 12px rgba(26, 54, 93, 0.04);
+  box-shadow: 0 2px 16px rgba(26, 54, 93, 0.06);
 }
 
-.site-header .container {
+.site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: var(--header-h);
-}
-
-/* Logo */
-.site-logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  min-height: 44px;  /* accessibility: 44px hit area */
-  min-width: 44px;
-}
-
-.site-logo img {
-  height: 80px;
-  min-height: 80px;
-  width: auto;
+  justify-content: center;
+  min-height: 52px;
 }
 
 /* Desktop Nav */
@@ -329,20 +394,21 @@ strong {
 .site-nav__list {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
 }
 
 .site-nav__link {
   display: flex;
   align-items: center;
-  min-height: 44px;  /* 44px touch target */
+  min-height: 44px;
   padding: var(--space-sm) var(--space-md);
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--navy);
   text-decoration: none;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   position: relative;
   transition: color var(--duration-fast) var(--ease-out);
 }
@@ -350,7 +416,7 @@ strong {
 .site-nav__link::after {
   content: '';
   position: absolute;
-  bottom: 6px;
+  bottom: 4px;
   left: var(--space-md);
   right: var(--space-md);
   height: 2px;
@@ -1567,13 +1633,24 @@ strong {
     display: block;
   }
 
-  .site-header .container {
-    height: var(--header-h-mobile);
+  /* Masthead stacks on tablet */
+  .masthead__collage {
+    display: none;
   }
 
-  .site-logo img {
-    height: 60px;
-    min-height: 60px;
+  .masthead__logo img {
+    height: 90px;
+  }
+
+  .masthead__inner {
+    justify-content: center;
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+  }
+
+  /* Nav row has hamburger on right */
+  .site-header__inner {
+    justify-content: flex-end;
   }
 }
 
@@ -1585,6 +1662,11 @@ strong {
   .container {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
+  }
+
+  /* Masthead mobile */
+  .masthead__logo img {
+    height: 80px;
   }
 
   .hero {
@@ -1650,6 +1732,11 @@ strong {
   .fade-in-up {
     opacity: 1;
     transform: none;
+  }
+
+  .masthead__collage-reveal {
+    opacity: 1;
+    animation: none;
   }
 
   html {
