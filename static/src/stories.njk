@@ -19,26 +19,26 @@ description: "Stories and reflections from families and individuals touched by t
     <!-- ==========================================
          FEATURED STORY
          ========================================== -->
-    <section class="section" id="featured-story">
+    <section class="section" id="featured-story" aria-labelledby="featured-story-heading">
       <div class="container">
 
         <div class="section-header">
           <span class="section-label">Featured</span>
-          <h2>A Story Worth Sharing</h2>
+          <h2 id="featured-story-heading">A Story Worth Sharing</h2>
         </div>
 
-        <div class="split-inner story-card">
+        <article class="split story-card">
 
           <!-- Image Side -->
-          <div class="split-image">
-            <div class="split-image-placeholder" style="min-height: 320px; background: linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 50%, #ddd3c3 100%); border-radius: 12px;">
-              <img src="/images/smp-logo-mark.png" alt="" aria-hidden="true" class="split-placeholder-logo" style="max-width: 60px; opacity: 0.25;">
+          <div class="split__image">
+            <div class="story-placeholder-image" aria-hidden="true">
+              <img src="/images/smp-logo-mark.png" alt="" aria-hidden="true" class="split-placeholder__logo">
             </div>
           </div>
 
           <!-- Text Side -->
-          <div class="split-text">
-            <h3 style="font-family: 'Lora', serif; font-size: 1.75rem; margin-bottom: 1rem;">Finding Her Voice Again</h3>
+          <div class="split__text">
+            <h3>Finding Her Voice Again</h3>
             <p>
               When Margaret&rsquo;s family first came to us, they felt like they were losing her a
               little more each day. She had stopped speaking much, and the silence was heavy.
@@ -54,7 +54,7 @@ description: "Stories and reflections from families and individuals touched by t
             <a href="#" class="text-link" aria-label="Read the full story: Finding Her Voice Again">Read This Story &rarr;</a>
           </div>
 
-        </div><!-- /.split-inner -->
+        </article><!-- /.split -->
 
       </div><!-- /.container -->
     </section>
@@ -63,68 +63,80 @@ description: "Stories and reflections from families and individuals touched by t
     <!-- ==========================================
          STORY GRID
          ========================================== -->
-    <section class="section section--cream" id="all-stories">
+    <section class="section section--cream" id="all-stories" aria-labelledby="all-stories-heading">
       <div class="container">
 
         <div class="section-header">
           <span class="section-label">More Stories</span>
-          <h2>From Our Community</h2>
+          <h2 id="all-stories-heading">From Our Community</h2>
         </div>
 
         <div class="grid-3">
 
           <!-- Story 1 -->
-          <article class="pillar-card story-card">
-            <div style="height: 180px; background: linear-gradient(135deg, #f0ebe3, #e5ddd2); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;" aria-hidden="true"></div>
-            <p style="font-size: 0.85rem; color: #6B6155; margin-bottom: 0.5rem;">January 12, 2026</p>
-            <h3>The Garden She Still Remembers</h3>
-            <p>A woman who cannot recall yesterday tends to the roses she planted forty years ago, guided by hands that have never forgotten.</p>
-            <a href="#" class="text-link" aria-label="Read more about The Garden She Still Remembers">Read More &rarr;</a>
+          <article class="story-card">
+            <div class="story-card__image story-placeholder-image" aria-hidden="true"></div>
+            <div class="story-card__body">
+              <p class="story-card__date">January 12, 2026</p>
+              <h3>The Garden She Still Remembers</h3>
+              <p>A woman who cannot recall yesterday tends to the roses she planted forty years ago, guided by hands that have never forgotten.</p>
+              <a href="#" class="text-link" aria-label="Read more about The Garden She Still Remembers">Read More &rarr;</a>
+            </div>
           </article>
 
           <!-- Story 2 -->
-          <article class="pillar-card story-card">
-            <div style="height: 180px; background: linear-gradient(135deg, #ede7de, #dfd6ca); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;" aria-hidden="true"></div>
-            <p style="font-size: 0.85rem; color: #6B6155; margin-bottom: 0.5rem;">February 3, 2026</p>
-            <h3>Letters to Tomorrow</h3>
-            <p>A father writes letters to his future self, so that on the days he forgets, his own words can remind him who he is.</p>
-            <a href="#" class="text-link" aria-label="Read more about Letters to Tomorrow">Read More &rarr;</a>
+          <article class="story-card">
+            <div class="story-card__image story-placeholder-image" aria-hidden="true"></div>
+            <div class="story-card__body">
+              <p class="story-card__date">February 3, 2026</p>
+              <h3>Letters to Tomorrow</h3>
+              <p>A father writes letters to his future self, so that on the days he forgets, his own words can remind him who he is.</p>
+              <a href="#" class="text-link" aria-label="Read more about Letters to Tomorrow">Read More &rarr;</a>
+            </div>
           </article>
 
           <!-- Story 3 -->
-          <article class="pillar-card story-card">
-            <div style="height: 180px; background: linear-gradient(135deg, #f2ece4, #e3dbd0); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;" aria-hidden="true"></div>
-            <p style="font-size: 0.85rem; color: #6B6155; margin-bottom: 0.5rem;">February 18, 2026</p>
-            <h3>A Song That Never Left</h3>
-            <p>Music became the bridge when words could not. One family shares how a simple melody brought their mother back to them.</p>
-            <a href="#" class="text-link" aria-label="Read more about A Song That Never Left">Read More &rarr;</a>
+          <article class="story-card">
+            <div class="story-card__image story-placeholder-image" aria-hidden="true"></div>
+            <div class="story-card__body">
+              <p class="story-card__date">February 18, 2026</p>
+              <h3>A Song That Never Left</h3>
+              <p>Music became the bridge when words could not. One family shares how a simple melody brought their mother back to them.</p>
+              <a href="#" class="text-link" aria-label="Read more about A Song That Never Left">Read More &rarr;</a>
+            </div>
           </article>
 
           <!-- Story 4 -->
-          <article class="pillar-card story-card">
-            <div style="height: 180px; background: linear-gradient(135deg, #eee8df, #e0d7cb); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;" aria-hidden="true"></div>
-            <p style="font-size: 0.85rem; color: #6B6155; margin-bottom: 0.5rem;">March 1, 2026</p>
-            <h3>The Photograph on the Mantle</h3>
-            <p>Every morning he looks at the photograph and smiles. He may not remember the day it was taken, but he remembers the feeling.</p>
-            <a href="#" class="text-link" aria-label="Read more about The Photograph on the Mantle">Read More &rarr;</a>
+          <article class="story-card">
+            <div class="story-card__image story-placeholder-image" aria-hidden="true"></div>
+            <div class="story-card__body">
+              <p class="story-card__date">March 1, 2026</p>
+              <h3>The Photograph on the Mantle</h3>
+              <p>Every morning he looks at the photograph and smiles. He may not remember the day it was taken, but he remembers the feeling.</p>
+              <a href="#" class="text-link" aria-label="Read more about The Photograph on the Mantle">Read More &rarr;</a>
+            </div>
           </article>
 
           <!-- Story 5 -->
-          <article class="pillar-card story-card">
-            <div style="height: 180px; background: linear-gradient(135deg, #f3ede5, #e6ded3); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;" aria-hidden="true"></div>
-            <p style="font-size: 0.85rem; color: #6B6155; margin-bottom: 0.5rem;">March 7, 2026</p>
-            <h3>What His Hands Still Know</h3>
-            <p>A retired carpenter who has lost most of his words can still build a perfect dovetail joint. Some knowledge lives deeper than memory.</p>
-            <a href="#" class="text-link" aria-label="Read more about What His Hands Still Know">Read More &rarr;</a>
+          <article class="story-card">
+            <div class="story-card__image story-placeholder-image" aria-hidden="true"></div>
+            <div class="story-card__body">
+              <p class="story-card__date">March 7, 2026</p>
+              <h3>What His Hands Still Know</h3>
+              <p>A retired carpenter who has lost most of his words can still build a perfect dovetail joint. Some knowledge lives deeper than memory.</p>
+              <a href="#" class="text-link" aria-label="Read more about What His Hands Still Know">Read More &rarr;</a>
+            </div>
           </article>
 
           <!-- Story 6 -->
-          <article class="pillar-card story-card">
-            <div style="height: 180px; background: linear-gradient(135deg, #efe9e0, #e2dacf); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;" aria-hidden="true"></div>
-            <p style="font-size: 0.85rem; color: #6B6155; margin-bottom: 0.5rem;">March 14, 2026</p>
-            <h3>Dancing in the Kitchen</h3>
-            <p>She does not remember their wedding, but when he puts on their song, she reaches for his hand. And they dance.</p>
-            <a href="#" class="text-link" aria-label="Read more about Dancing in the Kitchen">Read More &rarr;</a>
+          <article class="story-card">
+            <div class="story-card__image story-placeholder-image" aria-hidden="true"></div>
+            <div class="story-card__body">
+              <p class="story-card__date">March 14, 2026</p>
+              <h3>Dancing in the Kitchen</h3>
+              <p>She does not remember their wedding, but when he puts on their song, she reaches for his hand. And they dance.</p>
+              <a href="#" class="text-link" aria-label="Read more about Dancing in the Kitchen">Read More &rarr;</a>
+            </div>
           </article>
 
         </div><!-- /.grid-3 -->
@@ -136,9 +148,9 @@ description: "Stories and reflections from families and individuals touched by t
     <!-- ==========================================
          CALL TO ACTION
          ========================================== -->
-    <section class="section cta-section">
-      <div class="container cta-inner">
-        <h2>Every Story Deserves to Be Held</h2>
+    <section class="section cta-section" id="stories-cta" aria-labelledby="stories-cta-heading">
+      <div class="container">
+        <h2 id="stories-cta-heading">Every Story Deserves to Be Held</h2>
         <p>
           Your support helps us collect, honor, and share the stories of individuals and
           families navigating memory loss. Together, we make sure no one is forgotten.
