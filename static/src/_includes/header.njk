@@ -1,31 +1,27 @@
-  <!-- Skip to Content (visually hidden until keyboard focus) -->
+  <!-- Skip to Content -->
   <a href="#main-content" class="visually-hidden-skip">Skip to main content</a>
 
   <!-- ============================================
-       MASTHEAD
+       MASTHEAD — Fixed-Grid Unified Layout
        ============================================ -->
   <div class="masthead" role="banner">
 
-    <!-- Row 1: Logo (centered) -->
-    <div class="masthead__logo-row">
-      <a href="/" class="masthead__logo" aria-label="Still Me Project — Home">
-        <img src="/images/smp-logo-full.png" alt="Still Me Project">
+    <!-- Logo: fixed 225px column -->
+    <div class="logo-container">
+      <a href="/" aria-label="Still Me Project — Home">
+        <img src="/images/smp-logo-full.png" alt="Still Me Project" class="main-logo">
       </a>
     </div>
 
-    <!-- Row 2: Connection Collage Mosaic (fades in from white) -->
-    <div class="masthead__mosaic" aria-hidden="true">
-      <div class="masthead__mosaic-grid">
-        <img src="/images/collage-2.jpg" alt="" class="masthead__mosaic-img">
-        <img src="/images/collage-4.jpg" alt="" class="masthead__mosaic-img">
-        <img src="/images/collage-1.jpg" alt="" class="masthead__mosaic-img">
-      </div>
+    <!-- Collage: fluid column with mask fade -->
+    <div class="collage-container">
+      <img src="/images/collage-unified.jpg" alt="" class="collage-img" aria-hidden="true">
     </div>
 
   </div>
 
   <!-- ============================================
-       NAVIGATION ROW (sticky)
+       NAVIGATION ROW (separate, sticky)
        ============================================ -->
   <header class="site-header">
     <div class="container site-header__inner">
