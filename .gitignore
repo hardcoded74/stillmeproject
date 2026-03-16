@@ -33,3 +33,4 @@ Thumbs.db
 
 # Drush
 /drush/Commands/contrib/
+web/themes/custom/stillme.zip

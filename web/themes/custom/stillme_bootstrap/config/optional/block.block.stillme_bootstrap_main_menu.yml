@@ -8,7 +8,7 @@ dependencies:
     - stillme_bootstrap
 id: stillme_bootstrap_main_menu
 theme: stillme_bootstrap
-region: primary_menu
+region: nav_main
 weight: 0
 provider: null
 plugin: 'system_menu_block:main'

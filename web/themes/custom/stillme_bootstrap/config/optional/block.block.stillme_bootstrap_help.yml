@@ -8,8 +8,8 @@ dependencies:
     - stillme_bootstrap
 id: stillme_bootstrap_help
 theme: stillme_bootstrap
-region: highlighted
-weight: 5
+region: content
+weight: -15
 provider: null
 plugin: help_block
 settings:

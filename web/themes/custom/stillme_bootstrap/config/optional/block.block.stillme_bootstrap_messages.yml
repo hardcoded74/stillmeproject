@@ -8,8 +8,8 @@ dependencies:
     - stillme_bootstrap
 id: stillme_bootstrap_messages
 theme: stillme_bootstrap
-region: highlighted
-weight: 0
+region: content
+weight: -20
 provider: null
 plugin: system_messages_block
 settings:

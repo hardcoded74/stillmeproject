@@ -8,7 +8,7 @@ dependencies:
     - stillme_bootstrap
 id: stillme_bootstrap_site_branding
 theme: stillme_bootstrap
-region: header
+region: nav_branding
 weight: 0
 provider: null
 plugin: system_branding_block
