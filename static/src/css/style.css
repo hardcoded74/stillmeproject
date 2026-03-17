@@ -69,7 +69,7 @@
   --space-2xl:     3rem;
   --space-3xl:     4rem;
   --space-4xl:     6rem;
-  --space-section: clamp(4rem, 3rem + 5vw, 7rem);
+  --space-section: clamp(5rem, 4rem + 6vw, 8rem);
 
   /* Layout */
   --container:     1140px;
@@ -1513,6 +1513,120 @@ strong {
   font-weight: 600;
   margin-top: var(--space-xs);
 }
+
+/* ----------------------------------------------------------------
+   WHITE PAPER CARDS
+   ---------------------------------------------------------------- */
+.paper-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(2.5rem, 2rem + 2vw, 5rem);
+  transition: box-shadow var(--duration-base) var(--ease-out);
+}
+
+.paper-card:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.paper-card h3 {
+  margin-bottom: var(--space-lg);
+}
+
+
+/* ----------------------------------------------------------------
+   JOURNAL SIDEBAR LAYOUT
+   ---------------------------------------------------------------- */
+.journal-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+}
+
+.journal-layout__main {
+  min-width: 0;
+}
+
+.journal-layout__sidebar {
+  background: var(--paper-warm);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  border-left: 3px solid var(--gold-accent);
+}
+
+.journal-layout__sidebar h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-lg);
+}
+
+@media (min-width: 1024px) {
+  .journal-layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   INITIATIVE CARDS
+   ---------------------------------------------------------------- */
+.initiative-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.initiative-card h4 {
+  margin-bottom: var(--space-sm);
+}
+
+.initiative-card p {
+  font-size: var(--text-sm);
+}
+
+
+/* ----------------------------------------------------------------
+   FOOTER LEGAL ROW
+   ---------------------------------------------------------------- */
+.footer-legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  text-align: center;
+}
+
+.footer-legal p {
+  font-size: var(--text-xs);
+  color: rgba(160, 176, 196, 0.5);
+}
+
+.footer-legal__links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-top: var(--space-sm);
+}
+
+.footer-legal__links a {
+  font-size: var(--text-xs);
+  color: rgba(160, 176, 196, 0.4);
+  transition: color var(--duration-fast);
+}
+
+.footer-legal__links a:hover {
+  color: var(--white);
+}
+
+
+/* ----------------------------------------------------------------
+   SOFT SECTION VARIANT
+   ---------------------------------------------------------------- */
+.section--soft {
+  background-color: #f8fafc;
+}
+
 
 /* ----------------------------------------------------------------
    ANIMATIONS
