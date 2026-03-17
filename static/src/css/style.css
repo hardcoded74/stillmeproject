@@ -295,8 +295,8 @@ strong {
    ---------------------------------------------------------------- */
 .masthead {
   display: grid;
-  grid-template-columns: 225px 1fr;
-  height: 225px;
+  grid-template-columns: 675px 1fr;
+  height: 675px;
   align-items: center;
   overflow: hidden;
   background-color: var(--white);
@@ -305,8 +305,8 @@ strong {
 
 /* Logo column — fixed, non-negotiable */
 .logo-container {
-  width: 225px;
-  height: 225px;
+  width: 675px;
+  height: 675px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,7 +331,7 @@ strong {
 /* Collage column — unified asset with soft left-edge fade */
 .collage-container {
   width: 100%;
-  height: 225px;
+  height: 675px;
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
@@ -1735,7 +1735,7 @@ strong {
   }
 
   .main-logo {
-    height: 120px;
+    height: 200px;
     width: auto;
     padding: 0;
   }
