@@ -69,7 +69,7 @@
   --space-2xl:     3rem;
   --space-3xl:     4rem;
   --space-4xl:     6rem;
-  --space-section: clamp(5rem, 4rem + 6vw, 8rem);
+  --space-section: clamp(3rem, 2.5rem + 3vw, 4.5rem);
 
   /* Layout */
   --container:     1140px;
@@ -295,7 +295,7 @@ strong {
    ---------------------------------------------------------------- */
 .masthead {
   display: grid;
-  grid-template-columns: 500px 1fr;
+  grid-template-columns: 560px 1fr;
   height: 280px;
   align-items: center;
   overflow: hidden;
@@ -305,7 +305,7 @@ strong {
 
 /* Logo column — large and prominent */
 .logo-container {
-  width: 500px;
+  width: 560px;
   height: 280px;
   display: flex;
   align-items: center;
@@ -561,12 +561,12 @@ strong {
    ---------------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: max(80vh, 600px);
+  min-height: max(55vh, 420px);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-4xl) var(--space-xl);
+  padding: var(--space-3xl) var(--space-xl);
   overflow: hidden;
   background:
     radial-gradient(ellipse 60% 50% at 50% 45%, rgba(212, 175, 55, 0.04) 0%, transparent 70%),
@@ -579,7 +579,7 @@ strong {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   max-width: 740px;
 }
 
@@ -673,7 +673,7 @@ strong {
 .section-header {
   text-align: center;
   max-width: 620px;
-  margin: 0 auto var(--space-3xl);
+  margin: 0 auto var(--space-xl);
 }
 
 .section-header p {
@@ -833,7 +833,7 @@ strong {
   text-align: center;
   max-width: 780px;
   margin: 0 auto;
-  padding: var(--space-xl) 0;
+  padding: var(--space-md) 0;
 }
 
 .reflection__line {
@@ -886,7 +886,7 @@ strong {
   background: linear-gradient(145deg, var(--navy) 0%, var(--navy-deep) 100%);
   color: var(--ink-on-navy);
   text-align: center;
-  padding: var(--space-section) 0;
+  padding: var(--space-3xl) 0;
   position: relative;
   overflow: hidden;
 }
@@ -1521,7 +1521,7 @@ strong {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: clamp(2.5rem, 2rem + 2vw, 5rem);
+  padding: clamp(1.5rem, 1.25rem + 1.5vw, 2.5rem);
   transition: box-shadow var(--duration-base) var(--ease-out);
 }
 
@@ -1780,8 +1780,8 @@ strong {
   }
 
   .hero {
-    min-height: max(70vh, 500px);
-    padding: var(--space-3xl) var(--space-lg);
+    min-height: max(50vh, 360px);
+    padding: var(--space-2xl) var(--space-lg);
   }
 
   .hero__buttons {
